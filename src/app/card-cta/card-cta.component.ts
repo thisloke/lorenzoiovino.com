@@ -7,10 +7,10 @@ import {ButtonCtaComponent} from "../button-cta/button-cta.component";
   imports: [
     ButtonCtaComponent
   ],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+  templateUrl: './card-cta.component.html',
+  styleUrl: './card-cta.component.scss'
 })
-export class CardComponent {
+export class CardCtaComponent {
 
   @Input() color: 'light' | 'dark' = 'light';
   @Input() ctaUrl: string = '';

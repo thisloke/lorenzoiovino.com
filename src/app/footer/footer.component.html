@@ -1,5 +1,6 @@
 <div class="bottom-0 bg-secondary w-full flex flex-col">
-    <iov-card [ctaUrl]="'hello'"
+  <iov-fish></iov-fish>
+  <iov-card [ctaUrl]="'hello'"
               class="mr-8 ml-8 relative -top-12">
      <span left>
        <span class="text-accent"> Talk is cheap</span>
@@ -11,8 +12,22 @@
         Let's Talk!
       </span>
     </iov-card>
-  <div class="text-center text-white p-4">
-    Footer
-    Website made with etc...
+  <div class="text-right text-sm text-white p-4">
+    <div class="">Website made with Angular
+      <a href="https://angular.io/">
+        <img class="h-6 w-6 mx-1 inline-grid" src="/assets/angular.svg">
+      </a>
+    </div>
+    <div>
+      and TailwindCSS
+      <a href="https://tailwindcss.com/">
+        <img class="h-6 w-6 mx-1 inline-grid" src="/assets/tailwind.svg">
+      </a>
+      <br/>
+    </div>
+    <div class="mt-2 font-bold">
+      <a href="https://github.com/lokenxo/loreiov.com">
+        Code <img src="/assets/github.svg" class="h-6 w-6 mx-1 inline-block" alt=""></a>
+    </div>
   </div>
 </div>

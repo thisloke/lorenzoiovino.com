@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import {CardComponent} from "../card/card.component";
+import {FishComponent} from "../fish/fish.component";
+import {CardCtaComponent} from "../card-cta/card-cta.component";
 
 @Component({
   selector: 'iov-footer',
   standalone: true,
   imports: [
-    CardComponent
+    CardCtaComponent,
+    FishComponent
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'

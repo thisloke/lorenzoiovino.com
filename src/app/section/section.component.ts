@@ -12,4 +12,6 @@ export class SectionComponent {
   @Input() title: string = '';
   @Input() titleColor: 'light' | 'dark' = 'light';
   @Input() backgroundImageUrl: string = '';
+  @Input() backgroundColor: 'light' | 'dark' = 'light';
+  @Input() noHeight: boolean = false;
 }
