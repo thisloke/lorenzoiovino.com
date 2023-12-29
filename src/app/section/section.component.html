@@ -1,0 +1,8 @@
+<div class="bg-center h-[150px] bg-no-repeat {{backgroundImageUrl ? 'url(' + backgroundImageUrl +')' : 'bg-secondary'}}" [style.background-image]="backgroundImageUrl ? 'url(' + backgroundImageUrl +')' : ''">
+  <h2 class="pt-4 text-3xl text-gray-600 mr-6 font-extrabold text-{{titleColor == 'light' ? 'white' : 'primary'}}">{{title}}</h2>
+</div>
+<div class="px-6">
+  <div class="mx-auto max-w-4xl py-4">
+    <ng-content></ng-content>
+  </div>
+</div>
