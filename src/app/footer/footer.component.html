@@ -1,30 +1,32 @@
-<div class="static bottom-0 bg-secondary w-full flex flex-col">
+<div class="block bottom-0 bg-secondary w-full">
   <iov-fish></iov-fish>
-  <iov-card [ctaUrl]="'hello'"
+  <iov-card [ctaUrl]="'mailto:thisloke@gmail.com'"
+            [borderRounded]="false"
               class="mr-8 ml-8 relative -top-12">
      <span left>
        <span class="text-accent"> Talk is cheap</span>
      </span>
       <span center>
-        Interested in working together? <br/> We should queue up a <b class="text-accent">time to chat</b>. <br/>I’ll buy the coffee :)
+        Interested in working together? <br/> We should schedule a <b class="text-accent">time to chat</b>. <br/>I’ll bring the tea :)
       </span>
       <span right>
         Let's Talk!
       </span>
     </iov-card>
-  <div class="text-right text-xs text-white p-4">
-    <div class="">Made with Angular
-      <a href="https://angular.io/">
-        <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/angular.svg" height="16" width="16">
+    <div class="text-right text-xs text-white p-4 leading-tight">
+      <div class="">Made with Angular
+        <a href="https://angular.io/">
+          <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/angular.svg" height="16" width="16">
+        </a>
+      and TailwindCSS
+      <a href="https://tailwindcss.com/">
+        <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/tailwind.svg" height="16" width="16">
       </a>
-    and TailwindCSS
-    <a href="https://tailwindcss.com/">
-      <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/tailwind.svg" height="16" width="16">
-    </a>
-    <br/>
-    <br/>
-    <a href="https://github.com/lokenxo/loreiov.com">
-      Check the source code <img ngSrc="/assets/github.svg" class="h-6 w-6 mx-1 inline-block" alt="" height="800"
-                                 width="800"></a>
+      <br/>
+      <br/>
+      <a href="https://github.com/lokenxo/loreiov.com">
+        Check the source code <img ngSrc="/assets/github.svg" class="h-6 w-6 mx-1 inline-block" alt="" height="800"
+                                   width="800"></a>
+    </div>
   </div>
 </div>

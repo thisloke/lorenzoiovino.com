@@ -7,6 +7,7 @@ import {PortfolioPage} from "./pages/portfolio/portfolio.page";
 import {ContactMePage} from "./pages/contact-me/contact-me.page";
 import {PageComponent} from "./page/page.component";
 import {LikeDislikePage} from "./pages/like-dislike/like-dislike.page";
+import {DisclaimerComponent as PortfolioDisclaimerComponent} from "./pages/portfolio/disclaimer/disclaimer.component";
 
 export const routes: Routes = [
   {
@@ -23,7 +24,17 @@ export const routes: Routes = [
       },
       {
         path : 'portfolio',
-        component: PortfolioPage,
+        component: PageComponent,
+        children: [
+          {
+            path: '',
+            component: PortfolioPage,
+          },
+          {
+            path: 'disclaimer',
+            component: PortfolioDisclaimerComponent,
+          }
+        ]
       },
       {
         path: 'projects',

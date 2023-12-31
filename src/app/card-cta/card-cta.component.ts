@@ -14,4 +14,5 @@ export class CardCtaComponent {
 
   @Input() color: 'light' | 'dark' = 'light';
   @Input() ctaUrl: string = '';
+  @Input() borderRounded: boolean = true;
 }
