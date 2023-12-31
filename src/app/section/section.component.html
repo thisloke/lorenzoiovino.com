@@ -1,12 +1,14 @@
-<div class="bg-center h-[150px] bg-no-repeat
-    {{noHeight ? 'h-0' : 'h-[150px]'}}
+<div class="bg-center bg-no-repeat
+    {{noHeight ? 'h-[0px]' : 'h-[150px]'}}
     bg-{{backgroundColor == 'light' ? 'white' : 'secondary'}}
     {{backgroundImageUrl ? 'url(' + backgroundImageUrl +')' : ''}}"
    [style.background-image]="backgroundImageUrl ? 'url(' + backgroundImageUrl +')' : ''">
-  <h2 class="mx-24 pt-4 text-4xl text-gray-600 mr-6 font-extrabold text-{{titleColor == 'light' ? 'white' : 'secondary'}}">{{title}}</h2>
+  <h2 class="mx-24 pt-8 text-6xl drop-shadow-2xl shadow-black text-gray-600 mr-6 font-extrabold text-{{titleColor == 'light' ? 'white' : 'secondary'}}">{{title}}</h2>
 </div>
 <div class="px-6">
-  <div class="mx-auto max-w-4xl py-4">
-    <ng-content></ng-content>
+  <div class="mx-auto max-w-4xl py-4 min-h-full">
+    <section class="text-gray-700 body-font">
+      <ng-content></ng-content>
+    </section>
   </div>
 </div>

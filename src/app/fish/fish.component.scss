@@ -7,22 +7,22 @@ svg.fish{
 
 @-webkit-keyframes swim
 {
-  0% {margin-left: -235px}
-  90% {margin-left: 100%;}
-  100% {margin-left: 100%;}
+  0% {left: -235px}
+  90% {left: calc(100% - 235px); width: 235px;}
+  100% {left: calc(100%); width: 0}
 }
 
 @keyframes swim
 {
-  0% {margin-left: -235px}
-  70% {margin-left: 100%;}
-  100% {margin-left: 100%;}
+  0% {left: -235px}
+  70% {left: calc(100% - 235px); width: 235px;}
+  100% {left: calc(100%); width: 0}
 }
 
 .fish{
   width: 235px;
   height: 104px;
-  margin-left: -235px;
+  left: -235px;
   position: absolute;
   animation: swim 20s;
   -webkit-animation: swim 20s;

@@ -3,6 +3,7 @@ import {SectionComponent} from "../section/section.component";
 import {Post} from "../models/post";
 import {PostCardComponent} from "../post-card/post-card.component";
 import {NgForOf, NgIf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'iov-highlight',
@@ -11,7 +12,8 @@ import {NgForOf, NgIf} from "@angular/common";
     SectionComponent,
     PostCardComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './highlight.component.html',
   styleUrl: './highlight.component.scss'

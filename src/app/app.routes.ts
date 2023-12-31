@@ -1,31 +1,46 @@
 import { Routes } from '@angular/router';
-import {AboutPage} from "./pages/about/about.page";
+import {BiographyPage} from "./pages/biography/biography.page";
 import {BlogPage} from "./pages/blog/blog.page";
 import {ProjectsPage} from "./pages/projects/projects.page";
 import {HomePage} from "./pages/home/home.page";
 import {PortfolioPage} from "./pages/portfolio/portfolio.page";
 import {ContactMePage} from "./pages/contact-me/contact-me.page";
+import {PageComponent} from "./page/page.component";
+import {LikeDislikePage} from "./pages/like-dislike/like-dislike.page";
 
 export const routes: Routes = [
-  { path: '', component: HomePage },
   {
-    path: 'about',
-    component: AboutPage,
+    path: '',
+    component: HomePage
   },
   {
-    path : 'portfolio',
-    component: PortfolioPage,
-  },
-  {
-    path : 'blog',
-    component: BlogPage,
-  },
-  {
-    path: 'projects',
-    component: ProjectsPage,
-  },
-  {
-    path: 'hello',
-    component: ContactMePage,
+    path: '',
+    component: PageComponent,
+    children: [
+      {
+        path: 'biography',
+        component: BiographyPage,
+      },
+      {
+        path : 'portfolio',
+        component: PortfolioPage,
+      },
+      {
+        path: 'projects',
+        component: ProjectsPage,
+      },
+      {
+        path: 'like-dislike',
+        component: LikeDislikePage,
+      },
+      {
+        path : 'blog',
+        component: BlogPage,
+      },
+      {
+        path: 'hello',
+        component: ContactMePage,
+      }
+    ]
   }
 ];

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AsciiPhotoComponent} from "../ascii-photo/ascii-photo.component";
-import {AsyncPipe, NgClass, NgIf} from "@angular/common";
+import {AsyncPipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'iov-hero',
@@ -10,6 +10,7 @@ import {AsyncPipe, NgClass, NgIf} from "@angular/common";
     NgIf,
     NgClass,
     AsyncPipe,
+    NgOptimizedImage,
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
