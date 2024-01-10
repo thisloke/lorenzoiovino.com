@@ -1,14 +1,16 @@
-<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<nav class="flex items-center flex-wrap bg-teal-500 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6 {{router.url == '/' ? 'text-white' : 'text-neutral'}}">
     <span class="font-semibold text-xl tracking-tight">
       <a href="/">Home</a>
     </span>
   </div>
   <div class="text-xl font-bold lg:flex-grow">
+        <span class="font-semibold text-xl tracking-tight">
     <a href="biography"
-       class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{router.url == '/biography' ? 'text-white' : 'text-neutral'}}">
+       class="block mt-0 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{router.url == '/biography' ? 'text-white' : 'text-neutral'}}">
       Bio
     </a>
+        </span>
     <!--<a href="portfolio" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
       Portfolio
     </a>-->

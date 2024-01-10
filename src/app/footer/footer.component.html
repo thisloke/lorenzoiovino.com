@@ -1,8 +1,8 @@
-<div class="block bottom-0 bg-secondary w-full">
+<div class="bottom-0 min-h-[200px] bg-secondary w-full my-4 h-full grid grid-cols-1 content-end justify-end bg-slate-100 gap-8">
   <iov-fish></iov-fish>
   <iov-card [ctaUrl]="'mailto:thisloke@gmail.com'"
             [borderRounded]="false"
-              class="mr-8 ml-8 relative -top-12">
+              class="mr-8 ml-8 relative -top-12 hidden">
      <span left>
        <span class="text-accent"> Talk is cheap</span>
      </span>
@@ -13,7 +13,7 @@
         Let's Talk!
       </span>
     </iov-card>
-    <div class="text-right text-xs text-white p-4 leading-tight">
+    <div class="text-right text-xs text-white p-4 leading-none sm:leading-tight relative">
       <div class="">Made with Angular
         <a href="https://angular.io/">
           <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/angular.svg" height="16" width="16">
