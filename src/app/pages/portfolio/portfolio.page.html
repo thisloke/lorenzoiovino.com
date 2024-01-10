@@ -1,0 +1,11 @@
+<iov-section [title]="'Portfolio'"
+             [backgroundImageUrl]="'/assets/green.JPG'">
+  <div class="mb-10">
+    <div class="grid grid-cols-3 bg-slate-100 p-4">
+      <div *ngFor="let job of jobs; index as i" class="m-4 {{expandedJob == i ? ('col-span-3 order-' + i) : 'col-span-1 order-'+ i}}">
+        <iov-portfolio-item-card [job]="job" (expand)="expand(i)" [expanded]="i == expandedJob">
+        </iov-portfolio-item-card>
+      </div>
+     </div>
+  </div>
+</iov-section>
