@@ -1,5 +1,5 @@
 <iov-section [title]="'Portfolio'"
-             [backgroundImageUrl]="'/assets/green.JPG'">
+             [backgroundImageUrl]="'/assets/green.jpg'">
   <div class="mb-10">
     <div class="grid grid-cols-3 bg-slate-100 p-4">
       <div *ngFor="let job of jobs; index as i" class="m-4 {{expandedJob == i ? ('col-span-3 order-' + i) : 'col-span-1 order-'+ i}}">
