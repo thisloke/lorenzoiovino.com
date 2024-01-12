@@ -1,0 +1,25 @@
+name: Upload to S3
+
+on: 
+ push:
+    branches: [main]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+      - uses: actions/checkout@master
+      - uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: 'dist/loreiov.com/browser'
