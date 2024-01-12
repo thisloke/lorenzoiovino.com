@@ -1,5 +1,5 @@
 <div class="bg-white shadow-md border border-primary rounded-lg mb-4 p-4 max-h-80 min-h-80 overflow-hidden flex flex-col flex-wrap">
-  <img class="rounded-t-lg float-left max-h-32 min-h-32 object-contain {{expanded ? 'object-left max-w-32' : ''}}" ngSrc="{{job?.image}}" alt="" width="300" height="100">
+  <img class="rounded-t-lg float-left max-h-32 min-h-32 object-contain {{expanded ? 'object-left max-w-32' : ''}}" ngSrc="{{job?.image}}" alt="" width="300" height="100" loading="lazy">
   <h5 class="text-gray-900 text-xl tracking-tight mb-2 justify-left" *ngIf="expanded">{{job?.name}} <br/> <em class="text-lg"><i>{{job?.role}}</i></em></h5>
   <div class="flex {{expanded ? 'max-w-96 flex-col -ml-1/5' : 'items-center'}} flex-1">
       <h5 class="text-gray-900 text-xl tracking-tight mb-2 justify-left" *ngIf="!expanded">{{job?.name}} <br/> <em class="text-lg"><i>{{job?.role}}</i></em></h5>
