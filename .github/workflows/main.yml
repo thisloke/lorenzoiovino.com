@@ -1,6 +1,6 @@
 name: Upload to S3
 
-on: 
+on:
  push:
     branches: [main]
 
@@ -22,4 +22,4 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'dist/loreiov.com/browser'
+          source_dir: './dist/loreiov.com/browser'
