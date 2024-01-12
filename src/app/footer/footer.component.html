@@ -1,4 +1,4 @@
-<div class="bottom-0 min-h-[200px] bg-secondary w-full h-full grid grid-cols-1 content-end justify-end bg-slate-100 gap-8">
+<div class="bottom-0 bg-secondary pt-12 w-full h-full grid grid-cols-1 content-end justify-end bg-slate-100 gap-8">
   <iov-fish></iov-fish>
   <iov-card [ctaUrl]="'mailto:thisloke@gmail.com'"
             [borderRounded]="false"
@@ -13,28 +13,26 @@
         Let's Talk!
       </span>
     </iov-card>
-  <div class="flex justify-between self-end">
-    <div class="text-left text-white p-4 leading-none sm:leading-tight flex flex-col z-10">
-      <div class="mx-2 my-1 font-bold">Lorenzo Iovino</div>
-      <div class="flex my-2">
+  <div class="flex justify-between self-end flex-col-reverse sm:flex-row">
+    <div class="text-center sm:text-left text-white p-0 sm:p-4 leading-none sm:leading-tight flex flex-col z-10 text-sm sm:text-sm justify-end items-center sm:items-start">
+      <div class="flex my-2 flex-wrap w-max">
         <div class="mx-2">
+          <span class="italic mr-1">Lorenzo Iovino</span> |
+        </div>
         <a href="https://www.iubenda.com/privacy-policy/98687046" class="hover:text-accent iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        </div>
-        <div class="mx-2">
-          <a href="https://www.iubenda.com/privacy-policy/98687046/cookie-policy" class="hover:text-accent iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-        </div>
+        <a href="https://www.iubenda.com/privacy-policy/98687046/cookie-policy" class="ml-2 hover:text-accent iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
       </div>
       </div>
-    <div class="text-right text-sm text-white p-4 leading-none sm:leading-tight relative mx-2">
-      <div class="">Made with Angular
+    <div class="text-center sm:text-right text-white p-0 sm:p-4 leading-none sm:leading-tight relative mx-2 text-sm sm:text-sm pb-4 sm:mb-0">
+      <div class="">Made with <span class="hidden sm:inline">Angular</span>
         <a href="https://angular.io/">
           <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/angular.svg" height="16" width="16" loading="lazy">
         </a>
-        and TailwindCSS
+        and <span class="hidden sm:inline">TailwindCSS</span>
         <a href="https://tailwindcss.com/">
           <img class="h-6 w-6 mx-1 inline-grid" ngSrc="/assets/tailwind.svg" height="16" width="16" loading="lazy">
         </a>
-        <br/>
+        <br class=""/>
         <a href="https://github.com/thisloke/loreiov.com" class="hover:text-accent">
           Check the source code <img ngSrc="/assets/github.svg" class="h-6 w-6 mx-1 my-1 inline-block" alt="" height="800"
                                      width="800" loading="lazy"></a>
