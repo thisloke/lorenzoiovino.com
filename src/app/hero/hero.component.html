@@ -1,7 +1,7 @@
 <div class="bg-secondary">
-  <div class="relative px-6 pt-0 lg:pt-14 lg:px-8">
-    <div class="mx-auto max-w-4xl py-16 pb-32 sm:py-48 lg:pt-32 lg:pb-58">
-        <div class="flex rounded-2xl text-sm leading-6 text-gray-600 border-l-8 border-primary hover:ring-gray-900/20 overflow-hidden bg-white max-h-[279px]">
+  <div class="relative px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl">
+        <div class="flex rounded-2xl text-base leading-6 text-gray-600 border-l-8 border-primary hover:ring-gray-900/20 overflow-hidden bg-white items-end">
           <iov-ascii-photo [index]="1"
                          id="asciiPhoto"
                          class="hidden sm:block absolute text-[5px] rounded-x-2xl leading-none tracking-tighter overflow-hidden"></iov-ascii-photo>
@@ -10,34 +10,35 @@
                class="h-[279px] hidden sm:block "
                alt="" height="300" width="300"
                loading="lazy">
-          <div class="self-center pt-6 sm:pt-0">
+          <div class="self-center pt-6 sm:pt-0 mx-2 sm:mx-0 ">
             <img ngSrc="/assets/photos/me.png"
-                 class="h-[120px] sm:hidden block float-left"
-                 alt="" height="120" width="120"
+                 class="h-[180px] sm:hidden block float-left"
+                 alt="" height="180" width="180"
                  loading="lazy">
-            <h1 class="text-2xl font-bold text-gray-900 sm:text-4xl sm:py-8 sm:top-8 mt-4 sm:mt-0 mb-2 sm:mb-0">Hey, I'm Lorenzo!</h1>
-            <div class="">
-              <h2 class="text-sm mx-4 sm:mx-0 sm:text-base leading-2 mr-4">
-                I'm on a quest to uncover life's meaning while diving deep into my passion for Computer Science as a <span class="text-primary font-bold">Software Engineer</span>.
+            <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl sm:py-8 sm:top-8 mt-4 sm:mt-0 mb-2 sm:mb-0 break-words">Hey, I'm Lorenzo!</h1>
+            <div class="mr-8">
+              <h2 class="text-lg mr-4 ml-4 sm:ml-0 sm:mx-4 sm:text-xl leading-2 sm:mr-24 mt-4 sm:mt-0 text-center sm:text-left">
+                I'm on a quest to uncover life's meaning while diving deep into my passion for Computer Science as a
+                <span class="text-primary font-bold drop-shadow-sm">Software Engineer</span>.
                 <br>Here, on my personal website, I share my projects and occasional thoughts.
               </h2>
 
-              <div class="mt-4 mx-4 sm:mx-0 text-sm sm:text-base leading-2 mr-4">
+              <div class="text-lg mt-4 ml-4 sm:ml-0 mr-4 sm:mx-4 sm:text-xl leading-2 sm:mr-24 text-center sm:text-left">
                 Explore more about me and feel free to reach out for any questions or collaborations via
-                <a class="cursor-pointer underline text-primary hover:text-accent" href="mailto:thisloke@gmail.com">email</a>
+                <a class="cursor-pointer underline text-primary hover:text-accent drop-shadow-sm" href="mailto:thisloke@gmail.com">email</a>
                 or on socials!
-                <div class="flex justify-center sm:justify-end h-[60px] mr-0 sm:mr-4">
-                  <a class="mx-2 relative cursor-pointer" href="https://www.linkedin.com/in/lorenzoiovino/">
-                    <img ngSrc="/assets/linkedin.svg" class="h-6 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
-                  </a>
-                  <a class="mx-2 relative cursor-pointer" href="
-              https://github.com/thisloke">
-                    <img ngSrc="/assets/github.svg" class="h-6 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
-                  </a>
-                </div>
               <div>
             </div>
             </div>
+              <div class="flex justify-center sm:justify-end h-[60px] mt-4">
+                <a class="mx-2 relative cursor-pointer" href="https://www.linkedin.com/in/lorenzoiovino/">
+                  <img ngSrc="/assets/linkedin.svg" class="h-10 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
+                </a>
+                <a class="mx-2 relative cursor-pointer" href="
+              https://github.com/thisloke">
+                  <img ngSrc="/assets/github.svg" class="h-10 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
+                </a>
+              </div>
             </div>
           </div>
       </div>
