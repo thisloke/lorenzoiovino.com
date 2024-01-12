@@ -16,9 +16,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
-      - uses: shallwefootball/s3-upload-action@master
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: './dist/loreiov.com/browser'
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-south-1
+      - run: aws s3 sync ./dist/loreiov.com/browser/ s3://${{ secrets.AWS_BUCKET }} --delete
