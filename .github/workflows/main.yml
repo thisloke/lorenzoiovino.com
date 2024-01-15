@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
+      - run: npm run generate-sitemap
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}

@@ -22,7 +22,7 @@ export const routes: Routes = [
         path: 'biography',
         component: BiographyPage,
       },
-      {
+      /*{
         path : 'portfolio',
         component: PageComponent,
         children: [
@@ -51,7 +51,7 @@ export const routes: Routes = [
       {
         path: 'hello',
         component: ContactMePage,
-      }
+      }*/
     ]
   }
 ];
