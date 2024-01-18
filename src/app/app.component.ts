@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {MenuComponent} from "./menu/menu.component";
 import {HeroComponent} from "./hero/hero.component";
 import {SectionComponent} from "./section/section.component";
@@ -18,6 +18,7 @@ export class AppComponent {
 
   constructor(private metaTagService: Meta) {
     this.metaTagService.addTags([
+      { name: 'description', content: 'Lorenzo Iovino - Software Developer' },
       {
         name: 'keywords',
         content: 'Lorenzo Iovino, lorenzoiovino.com, Software Developer, Software Engineer, Sicily, Computer Science, Blog, Personal Page',

@@ -7,16 +7,18 @@
                          class="hidden sm:block absolute text-[5px] rounded-x-2xl leading-none tracking-tighter overflow-hidden"></iov-ascii-photo>
           <img ngSrc="/assets/photos/me.png"
                id="originalPhoto"
+               priority="true"
+               rel="preload"
                class="h-[279px] hidden sm:block "
-               alt="" height="300" width="300"
-               loading="lazy">
+               alt="Photo of me" height="300" width="300">
           <div class="self-center pt-6 sm:pt-0 mx-2 sm:mx-0 ">
             <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl sm:py-8 sm:top-8 mt-4 sm:mt-0 mb-2 sm:mb-0 break-words block sm:hidden mx-2">Hey, I'm Lorenzo!</h1>
             <div class="flex justify-center">
               <img ngSrc="/assets/photos/me.png"
+                   priority="true"
+                   rel="preload"
                    class="sm:hidden block clear-both"
-                   alt=""
-                   loading="lazy" height="300" width="300">
+                   alt="Photo of me" height="300" width="300">
             </div>
             <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl sm:py-8 sm:top-8 mt-4 sm:mt-0 mb-2 sm:mb-0 break-words hidden sm:block">Hey, I'm Lorenzo!</h1>
             <div class="mx-auto sm:mr-8">
@@ -35,11 +37,11 @@
             </div>
               <div class="flex justify-center sm:justify-end h-[60px] mt-4">
                 <a class="mx-2 relative cursor-pointer" href="https://www.linkedin.com/in/lorenzoiovino/">
-                  <img ngSrc="/assets/linkedin.svg" class="h-10 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
+                  <img ngSrc="/assets/linkedin.svg" class="h-10 sm:h-8 inline-block" height="30" width="30" loading="lazy" alt="Linkedin Logo">
                 </a>
                 <a class="mx-2 relative cursor-pointer" href="
               https://github.com/thisloke">
-                  <img ngSrc="/assets/github.svg" class="h-10 sm:h-8 inline-block" alt="" height="30" width="30" loading="lazy">
+                  <img ngSrc="/assets/github.svg" class="h-10 sm:h-8 inline-block" height="30" width="30" loading="lazy" alt="Github Logo">
                 </a>
               </div>
             </div>

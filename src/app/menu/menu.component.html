@@ -1,13 +1,13 @@
-<nav class="flex items-center flex-wrap bg-teal-500 p-6">
-  <div class="flex items-center flex-shrink-0 mr-6 {{router.url == '/' ? 'text-white' : 'text-neutral'}}">
+<nav class="flex items-center flex-wrap p-6">
+  <div class="flex items-center flex-shrink-0 mr-6 text-neutral {{router.url == '/' ? 'underline' : 'hover:text-white'}}">
     <span class="font-semibold text-xl tracking-tight">
-      <a href="/">Home</a>
+      <a href="/" class="drop-shadow-2xl shadow-black">Home</a>
     </span>
   </div>
   <div class="text-xl font-bold lg:flex-grow">
         <span class="font-semibold text-xl tracking-tight">
     <a href="biography"
-       class="block mt-0 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 {{router.url == '/biography' ? 'text-white' : 'text-neutral'}}">
+       class="block mt-0 lg:inline-block lg:mt-0 mr-4 text-neutral {{router.url == '/biography' ? 'underline' : 'hover:text-white'}}">
       Bio
     </a>
         </span>
