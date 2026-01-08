@@ -6,6 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/prose.css";
+import mePhoto from "../../assets/photos/me.png";
 
 type BlogPost = CollectionEntry<"blog">;
 
@@ -21,7 +22,7 @@ const { entry }: { entry: BlogPost } = Astro.props;
 const { Content } = await entry.render();
 
 // Extract image src for meta tags (Open Graph expects a URL string)
-const heroImageSrc = entry.data.heroImage?.src || "/photos/me.png";
+const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 ---
 
 <BaseLayout
@@ -78,7 +79,7 @@ const heroImageSrc = entry.data.heroImage?.src || "/photos/me.png";
 								class="w-full h-full object-cover"
 								width={1200}
 								height={630}
-								quality={80}
+								quality={70}
 								format="webp"
 							/>
 						</div>
@@ -94,12 +95,14 @@ const heroImageSrc = entry.data.heroImage?.src || "/photos/me.png";
 
 			<div class="mt-8 md:mt-12 bg-white rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8">
 				<div class="flex items-start gap-6">
-					<img
-						src="/photos/me.png"
+					<Image
+						src={mePhoto}
 						alt="Lorenzo Iovino"
 						class="w-20 h-20 rounded-full object-cover"
-						width="80"
-						height="80"
+						width={80}
+						height={80}
+						quality={90}
+						format="webp"
 					/>
 					<div>
 						<h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2">Lorenzo Iovino</h3>

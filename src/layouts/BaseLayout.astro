@@ -1,4 +1,7 @@
 ---
+import mePhoto from "../assets/photos/me.png";
+import "../styles/global.css";
+
 interface Props {
 	title: string;
 	description?: string;
@@ -14,18 +17,19 @@ const {
 	title,
 	description = "Lorenzo Iovino - Software Engineer based in Sicily. Passionate about technology, remote work, and life balance.",
 	canonicalUrl,
-	image = "/photos/me.png",
+	image,
 	type = "website",
 	publishedTime,
 	modifiedTime,
 	tags = [],
 } = Astro.props;
 
-const siteUrl = "https://www.lorenzoiovino.com";
-const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+const siteUrl = "https://lorenzoiovino.com";
+const defaultImage = mePhoto.src;
+const fullImageUrl = image
+	? (image.startsWith("http") ? image : `${siteUrl}${image}`)
+	: `${siteUrl}${defaultImage}`;
 const fullCanonicalUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
-
-import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -145,7 +149,7 @@ import "../styles/global.css";
 					name: "Lorenzo Iovino",
 					logo: {
 						"@type": "ImageObject",
-						url: `${siteUrl}/photos/me.png`,
+						url: `${siteUrl}${defaultImage}`,
 					},
 				},
 				...(publishedTime && { datePublished: publishedTime.toISOString() }),

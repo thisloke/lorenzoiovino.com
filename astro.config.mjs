@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
 	integrations: [tailwind(), sitemap(), mdx()],
-	site: "https://www.lorenzoiovino.com",
+	site: "https://lorenzoiovino.com",
 	compressHTML: true,
 	build: {
 		inlineStylesheets: "auto",
