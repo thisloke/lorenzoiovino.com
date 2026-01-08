@@ -1,0 +1,29 @@
+---
+import Fish from "../components/Fish.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/Navbar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Lorenzo Iovino >> Home"
+	description="Lorenzo Iovino - Software Developer"
+	canonicalUrl="https://www.lorenzoiovino.com"
+>
+	<Navbar />
+	<div class="bg-secondary min-h-screen flex flex-col relative pt-16">
+		<div class="flex-grow flex items-center justify-center relative z-10 py-12">
+			<Hero />
+		</div>
+		<div class="relative">
+			<div
+				class="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+				style="height: 100px; margin-bottom: 0;"
+			>
+				<Fish />
+			</div>
+			<Footer />
+		</div>
+	</div>
+</BaseLayout>

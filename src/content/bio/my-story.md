@@ -1,0 +1,163 @@
+---
+title: "My Story"
+description: "A journey through code, curiosity, and creativity"
+---
+
+## Hello world!
+
+Hi! I’m Lorenzo Iovino.
+
+I’m a Software Engineer (that’s my job), but I don’t like to define myself only with a role title. I’m a curious person and I always jump between code, ideas, and side passions.
+
+I was born in December 1988 and since then I’ve been basically chasing two things: understanding how things work, and building things that are useful (or just fun).
+
+This page is a small recap of my story. Nothing special, just me.
+
+## Childhood Nostalgia
+
+<div class="float-right img-medium">
+  <img src="/photos/me-baby.jpg" alt="Super young software developer with an Apple II" class="float-right img-medium" />
+  <em class="text-sm block mt-2">Super young software developer with an Apple II</em>
+</div>
+
+My first “wow” moment with computers was very early. I was around 4 years old and I was playing Prince of Persia on an Apple II.
+
+From that moment, computers never really left my life. Today they are my work, but also the main thing I enjoy.
+
+I grew up in Ispica, in the south of Sicily. My days were simple: school, videogames, and football with friends. Honestly, it was a good life.
+
+Ispica is slow, warm, and beautiful. When I was a kid I didn’t see it that way. I wanted to escape. I was dreaming about big cities, more people, more things happening, more opportunities.
+
+<div class="float-left img-medium">
+  <img src="/photos/pokemon.jpg" alt="Pokemon Yellow and Game Boy Advance" class="float-left img-medium" />
+  <em class="text-sm block mt-2">Pokemon Yellow and Game Boy Advance</em>
+</div>
+
+Then came Pokemon, Nintendo consoles, and long afternoons with friends. And at some point, I started to get curious about what was “behind” games and computers. That curiosity slowly became programming.
+
+When I was 15 I discovered rock music and it hit me hard. I bought a guitar and I started learning (very badly at the beginning) but I loved it.
+
+<div class="float-right img-medium">
+  <img src="/photos/me-guitar-17.jpg" alt="My dream guitar Fender stratocaster" class="float-right img-medium" />
+  <em class="text-sm block mt-2">My dream guitar "Fender stratocaster"</em>
+</div>
+
+Games + music = I became a classic nerd. I wanted to understand computers, programming languages, and all the “magic” under the hood.
+
+At 17 I also discovered Magic: The Gathering. It became another obsession for a while. I still play sometimes, just for fun.
+
+## University and Personal Growth
+
+I studied Computer Science at the University of Pisa. It was not a straight path.
+
+<div class="float-right img-medium">
+  <img src="/photos/me-cc.jpg" alt="Me burning out studying" class="float-right img-medium" />
+  <em class="text-sm block mt-2">Me burning out studying Computability and Complexity exam</em>
+</div>
+
+I read a lot (often not the books suggested by professors), I failed exams, I repeated exams, I took online courses, I attended workshops… I was trying to understand what “computer science” really is.
+
+And yes, I still have mixed feelings about Computability and Complexity. 😅
+
+It took me 12 years to finish my Bachelor. Not proud of the timeline, but I’m proud I didn’t quit.
+
+Moving to Pisa was not only about studying. It was also my first real “life outside Sicily” experience, and I needed that.
+
+<div class="float-left img-medium">
+  <img src="/photos/goliardia.jpg" alt="My student hat goliardo" class="float-left img-medium" />
+  <em class="text-sm block mt-2">My student hat (that's not a hat) "goliardo"</em>
+</div>
+
+University years for me were also: meeting people, spending time around the city, goliardia culture, wine sommelier course (yes), concerts, small music clubs, and long talks with strangers during aperitivo.
+
+That period also started my love for traveling. Seeing different cultures in real life changes your brain.
+
+## Embarking on Hackathon Adventures
+
+<div class="float-right img-small">
+  <img src="/photos/me-moverio.jpg" alt="Me wearing moverio smart glasses" class="float-right img-small" />
+  <em class="text-sm block mt-2">Me wearing moverio smart glasses</em>
+</div>
+
+My first hackathon was organized by [Vargroup](https://www.vargroup.it/).
+
+We were a random team: nobody knew each other. But in 24 hours we built a Proof of Concept + a business idea for a retail app for furniture.
+
+It was made for Epson Moverio Smartglass: the idea was to let people “place” furniture in their home in a virtual way.
+
+That experience made me addicted to hackathons. After that I joined other events like Hackaton Toscana (mobility) and also some game jams. Every time you learn something new, and you also learn a lot about teamwork under pressure.
+
+<div class="w-full">
+  <img src="/photos/game-jam.jpg" alt="Me and the team presenting the game" class="img-hero" />
+  <em class="text-sm block mt-2">Me and the team presenting the game developed</em>
+</div>
+
+*Gameplay of our game "Oh No My Husband is coming" developed for GGJ 2015: [Youtube link](https://www.youtube.com/embed/z1Kn6agAujI)*
+
+## Erasmus Project in Valencia
+
+<div class="float-right img-large">
+  <img src="/photos/valencia-turia.jpg" alt="Beautiful sunny day in Valencia" class="float-right img-large" />
+  <em class="text-sm block mt-2">Beautiful sunny day in Valencia</em>
+</div>
+
+A big turning point was my Erasmus in Valencia.
+
+I kept studying Computer Science at Universidad Politecnica, met people from everywhere, and got exposed to different cultures and languages.
+
+The tech environment there felt different compared to Italy. In that period there was a lot of energy: startups, new ideas, and a strong feeling that people wanted to build things.
+
+Valencia also helped me grow as a person. New country, new habits, new friends, new perspective.
+
+## Embracing the Tranquility of Sicily
+
+At some point I decided to go back to Sicily.
+
+Not as a “I give up” move. More like: I want a different balance.
+
+<div class="float-left img-medium">
+  <img src="/photos/remote.jpg" alt="Working remote watching the sea" class="float-left img-medium" />
+  <em class="text-sm block mt-2">Working remote watching the sea</em>
+</div>
+
+I lived the fast pace, the rush, the always-online mindset. Coming back here was intentional: less noise, more space, more time.
+
+I work remote, and Sicily is perfect for that. Life is slower. Sometimes it’s frustrating, but often it’s exactly what I need.
+
+Time here feels different. You can actually breathe. You can have “nothing special” days, and those days can still feel good.
+
+<div class="w-full">
+  <img src="/photos/dogs.jpg" alt="My wineyard" class="img-hero" />
+  <em class="text-sm block mt-2">My wineyard</em>
+</div>
+
+Family is a big part of my life here. And I also started a side project with my sister (she’s an agronomist): we planted a small vineyard near the sea and we started producing our own wine.
+
+That project became [www.netum.it](https://netum.it/). It’s small (1 hectare), limited bottles, but it’s something we built together and I love it.
+
+<div class="float-right img-small">
+  <img src="/photos/wine.jpg" alt="The wine produced Zia Lina" class="float-right img-small" />
+  <em class="text-sm block mt-2">The wine produced "Zia Lina"</em>
+</div>
+
+And yes: food. Sicily is crazy for food. It’s not even a “food culture”, it’s basically a religion.
+
+*(No food photos here. I’m not a food blogger. But trust me.)*
+
+For me, living here is a reminder: success is not only about projects and code. It’s also about how you live your days.
+
+<div class="w-full">
+  <img src="/photos/modica.jpg" alt="Modica view from my house" class="img-hero" />
+  <em class="text-sm block mt-2">Modica view from my house</em>
+</div>
+
+## Life at 35
+
+Today I’m a husband (to my wife Amanda) and a dad (to our little Leonardo).
+
+Life changed a lot, in a good way. I still love technology, I still build things, but family gives a different meaning to everything.
+
+<div class="w-full">
+  <img src="/photos/me-amanda.jpg" alt="Me and my wife Amanda" class="img-hero" />
+  <em class="text-sm block mt-2">Me and my wife Amanda</em>
+</div>

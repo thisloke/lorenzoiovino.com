@@ -1,0 +1,207 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Footer from "../../../components/Footer.astro";
+import Navbar from "../../../components/Navbar.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+type BlogPost = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+	const allPosts: BlogPost[] = await getCollection("blog");
+	const publishedPosts: BlogPost[] = allPosts.filter((post: BlogPost) => !post.data.draft);
+
+	const allTags = new Set<string>();
+	publishedPosts.forEach((post: BlogPost) => {
+		post.data.tags.forEach((tag: string) => {
+			allTags.add(tag);
+		});
+	});
+
+	return Array.from(allTags).map((tag: string) => {
+		const filteredPosts: BlogPost[] = publishedPosts
+			.filter((post: BlogPost) => post.data.tags.includes(tag))
+			.sort((a: BlogPost, b: BlogPost) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+		return {
+			params: { tag },
+			props: { posts: filteredPosts, tag },
+		};
+	});
+}
+
+const { posts, tag }: { posts: BlogPost[]; tag: string } = Astro.props;
+
+const displayTag: string = tag.charAt(0).toUpperCase() + tag.slice(1);
+---
+
+<BaseLayout
+	title={`${displayTag} Posts | Lorenzo Iovino Blog`}
+	description={`Browse all blog posts about ${displayTag}. ${posts.length} article${posts.length !== 1 ? "s" : ""} found.`}
+	canonicalUrl={`https://www.lorenzoiovino.com/blog/tag/${tag}`}
+>
+	<Navbar />
+	<div class="min-h-screen pt-16 bg-secondary">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+			<div class="mb-16 text-center">
+				<a
+					href="/blog"
+					class="inline-flex items-center text-white/80 hover:text-white transition-colors mb-6"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-5 w-5 mr-2"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+							clip-rule="evenodd"></path>
+					</svg>
+					Back to Blog
+				</a>
+				<div class="flex items-center justify-center gap-3 mb-4">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-8 w-8 text-white"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+						></path>
+					</svg>
+					<h1 class="text-white mb-0">{displayTag}</h1>
+				</div>
+				<p class="text-xl text-white/90 max-w-2xl mx-auto">
+					{posts.length} article{posts.length !== 1 ? "s" : ""} about {displayTag.toLowerCase()}
+				</p>
+				<div class="h-1 w-20 bg-white rounded-full mx-auto mt-6"></div>
+			</div>
+
+			<div class="space-y-8">
+				{
+					posts.map((post: BlogPost) => (
+						<article class="bg-white rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-shadow duration-300">
+							<div class="block">
+								{post.data.heroImage && (
+									<a href={`/blog/${post.slug}`} class="block">
+										<div class="relative h-64 overflow-hidden">
+											<img
+												src={post.data.heroImage}
+												alt={post.data.title}
+												class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+											/>
+											<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+										</div>
+									</a>
+								)}
+								<div class="p-8">
+									<div class="flex items-center gap-3 mb-4 text-sm text-gray-500">
+										<time datetime={post.data.pubDate.toISOString()}>
+											{post.data.pubDate.toLocaleDateString("en-US", {
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											})}
+										</time>
+										{post.data.tags.length > 0 && (
+											<>
+												<span>•</span>
+												<div class="flex gap-2 flex-wrap">
+													{post.data.tags.slice(0, 3).map((postTag: string) => (
+														<a
+															href={`/blog/tag/${postTag}`}
+															class={`px-2 py-1 text-xs rounded-lg font-medium transition-all duration-200 ${
+																postTag === tag
+																	? "bg-secondary text-white"
+																	: "bg-secondary/10 text-secondary hover:bg-secondary hover:text-white"
+															}`}
+														>
+															{postTag}
+														</a>
+													))}
+												</div>
+											</>
+										)}
+									</div>
+									<a href={`/blog/${post.slug}`} class="block group">
+										<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-secondary transition-colors">
+											{post.data.title}
+										</h2>
+										<p class="text-gray-700 text-lg leading-relaxed mb-4">
+											{post.data.description}
+										</p>
+										<div class="flex items-center text-secondary font-medium">
+											Read more
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-5 w-5 ml-2"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</div>
+									</a>
+								</div>
+							</div>
+						</article>
+					))
+				}
+			</div>
+
+			{
+				posts.length === 0 && (
+					<div class="bg-white rounded-2xl shadow-soft-lg p-12 text-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-16 w-16 mx-auto text-gray-300 mb-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<p class="text-gray-600 text-lg">No posts found with this tag.</p>
+					</div>
+				)
+			}
+
+			<div class="mt-12 text-center">
+				<a
+					href="/blog"
+					class="inline-flex items-center px-6 py-3 bg-white hover:bg-white/90 text-gray-900 font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-5 w-5 mr-2"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+							clip-rule="evenodd"></path>
+					</svg>
+					View All Posts
+				</a>
+			</div>
+		</div>
+	</div>
+	<Footer />
+</BaseLayout>

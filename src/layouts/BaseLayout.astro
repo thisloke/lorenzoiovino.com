@@ -1,0 +1,179 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	canonicalUrl?: string;
+	image?: string;
+	type?: "website" | "article";
+	publishedTime?: Date;
+	modifiedTime?: Date;
+	tags?: string[];
+}
+
+const {
+	title,
+	description = "Lorenzo Iovino - Software Developer based in Sicily. Passionate about technology, remote work, and life balance.",
+	canonicalUrl,
+	image = "/photos/me.png",
+	type = "website",
+	publishedTime,
+	modifiedTime,
+	tags = [],
+} = Astro.props;
+
+const siteUrl = "https://lorenzoiovino.com";
+const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+const fullCanonicalUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
+
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<script is:inline type="text/javascript">
+			var _iub = _iub || [];
+			_iub.csConfiguration = {
+				askConsentAtCookiePolicyUpdate: true,
+				cookiePolicyInOtherWindow: true,
+				enableFadp: true,
+				fadpApplies: true,
+				floatingPreferencesButtonDisplay: "anchored-center-right",
+				lang: "en",
+				perPurposeConsent: true,
+				siteId: 3452245,
+				whitelabel: false,
+				cookiePolicyId: 98687046,
+				banner: {
+					acceptButtonCaptionColor: "#FFFFFF",
+					acceptButtonColor: "#0073CE",
+					acceptButtonDisplay: true,
+					backgroundColor: "#FFFFFF",
+					closeButtonDisplay: false,
+					customizeButtonCaptionColor: "#4D4D4D",
+					customizeButtonColor: "#DADADA",
+					customizeButtonDisplay: true,
+					explicitWithdrawal: true,
+					listPurposes: true,
+					position: "float-bottom-left",
+					rejectButtonCaptionColor: "#FFFFFF",
+					rejectButtonColor: "#0073CE",
+					rejectButtonDisplay: true,
+					showPurposesToggles: true,
+					showTitle: false,
+					textColor: "#000000",
+				},
+			};
+		</script>
+		<script
+			is:inline
+			type="text/javascript"
+			src="//cdn.iubenda.com/cs/iubenda_cs.js"
+			charset="UTF-8"
+			async></script>
+
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-SPLW5RY3HD"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-SPLW5RY3HD");
+		</script>
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<meta
+			name="keywords"
+			content="Lorenzo Iovino, lorenzoiovino.com, Software Developer, Software Engineer, Sicily, Computer Science, Blog, Personal Page, Remote Work, Full Stack Developer, JavaScript, TypeScript, React, Node.js"
+		/>
+		<meta
+			name="robots"
+			content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+		/>
+		<meta name="author" content="Lorenzo Iovino" />
+		<meta name="language" content="en" />
+		<meta name="revisit-after" content="7 days" />
+		<meta name="theme-color" content="#1e3a8a" />
+
+		<link rel="canonical" href={fullCanonicalUrl} />
+
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={fullCanonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content="Lorenzo Iovino" />
+		<meta property="og:locale" content="en_US" />
+		{
+			publishedTime && (
+				<meta property="article:published_time" content={publishedTime.toISOString()} />
+			)
+		}
+		{modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+		{tags.length > 0 && tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={fullCanonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullImageUrl} />
+		<meta name="twitter:creator" content="@lorenzoiovino" />
+
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": type === "article" ? "BlogPosting" : "WebSite",
+				"@id": fullCanonicalUrl,
+				url: fullCanonicalUrl,
+				name: title,
+				description: description,
+				image: fullImageUrl,
+				author: {
+					"@type": "Person",
+					name: "Lorenzo Iovino",
+					url: siteUrl,
+					sameAs: ["https://github.com/thisloke", "https://www.linkedin.com/in/lorenzoiovino/"],
+				},
+				publisher: {
+					"@type": "Person",
+					name: "Lorenzo Iovino",
+					logo: {
+						"@type": "ImageObject",
+						url: `${siteUrl}/photos/me.png`,
+					},
+				},
+				...(publishedTime && { datePublished: publishedTime.toISOString() }),
+				...(modifiedTime && { dateModified: modifiedTime.toISOString() }),
+				...(type === "article" && tags.length > 0 && { keywords: tags.join(", ") }),
+			})}
+		/>
+
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Lorenzo Iovino >> Blog RSS Feed"
+			href="/rss.xml"
+		/>
+		<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="manifest" href="/manifest.json" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-secondary min-h-screen">
+		<slot />
+	</body>
+</html>

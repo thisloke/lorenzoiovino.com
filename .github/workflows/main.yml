@@ -1,32 +1,65 @@
-name: Upload to S3
+name: Deploy to S3
 
 on:
- push:
+  push:
     branches: [main]
 
 jobs:
-  upload:
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [20.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run build
-      - run: npm run generate-sitemap
-      - uses: aws-actions/configure-aws-credentials@v1
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm type-check
+
+      - name: Build
+        run: pnpm build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-south-1
-      - run: aws s3 sync ./dist/loreiov.com/browser/ s3://${{ secrets.AWS_BUCKET }} --delete
-      - uses: chetan/invalidate-cloudfront-action@v2
+
+      - name: Sync to S3
+        run: aws s3 sync ./dist s3://${{ secrets.AWS_BUCKET }} --delete --cache-control "public, max-age=31536000, immutable"
+
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
-          PATHS: "/index.html"
+          PATHS: "/*"
           AWS_REGION: "eu-south-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

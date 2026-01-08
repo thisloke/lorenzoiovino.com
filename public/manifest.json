@@ -1,0 +1,59 @@
+{
+	"name": "Lorenzo Iovino - Software Developer",
+	"short_name": "Lorenzo Iovino",
+	"description": "Software Developer based in Sicily. Passionate about technology, remote work, and life balance.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#1e3a8a",
+	"theme_color": "#1e3a8a",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "48x48",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "/photos/me.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/photos/me.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"categories": ["business", "productivity", "lifestyle"],
+	"lang": "en-US",
+	"dir": "ltr",
+	"scope": "/",
+	"shortcuts": [
+		{
+			"name": "Blog",
+			"short_name": "Blog",
+			"description": "Read my latest blog posts",
+			"url": "/blog",
+			"icons": [
+				{
+					"src": "/photos/me.png",
+					"sizes": "192x192"
+				}
+			]
+		},
+		{
+			"name": "Bio",
+			"short_name": "Bio",
+			"description": "Learn about my story",
+			"url": "/bio",
+			"icons": [
+				{
+					"src": "/photos/me.png",
+					"sizes": "192x192"
+				}
+			]
+		}
+	]
+}

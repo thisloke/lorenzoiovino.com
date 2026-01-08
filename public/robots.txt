@@ -1,0 +1,32 @@
+# robots.txt for lorenzoiovino.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://lorenzoiovino.com/sitemap-index.xml
+Sitemap: https://lorenzoiovino.com/rss.xml
+
+# Crawl-delay (optional, adjust if needed)
+# Crawl-delay: 1
+
+# Disallow paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
