@@ -28,11 +28,11 @@ const { Content } = await bioEntry.render();
 	<div class="min-h-screen pt-16 bg-secondary">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 			<div class="mb-16 text-center">
-				<h1 class="text-white mb-4">{bioEntry.data.title}</h1>
-				<p class="text-xl text-white/90 max-w-2xl mx-auto">
+				<h1 class="text-gray-800 mb-4">{bioEntry.data.title}</h1>
+				<p class="text-xl text-gray-700 max-w-2xl mx-auto">
 					{bioEntry.data.description}
 				</p>
-				<div class="h-1 w-20 bg-white rounded-full mx-auto mt-6"></div>
+				<div class="h-1 w-20 bg-gray-600 rounded-full mx-auto mt-6"></div>
 			</div>
 
 			<div class="bg-white rounded-2xl shadow-soft-lg p-8 md:p-12 lg:p-16">
@@ -60,7 +60,7 @@ const { Content } = await bioEntry.render();
 					>
 						<Image
 							src={linkedinIcon}
-							alt="LinkedIn"
+							alt=""
 							class="h-6 w-6 mr-3 opacity-80"
 							width={24}
 							height={24}
@@ -75,7 +75,7 @@ const { Content } = await bioEntry.render();
 					>
 						<Image
 							src={githubIcon}
-							alt="GitHub"
+							alt=""
 							class="h-6 w-6 mr-3 opacity-80"
 							width={24}
 							height={24}
