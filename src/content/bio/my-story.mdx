@@ -3,6 +3,21 @@ title: "My Story"
 description: "A journey through code, curiosity, and creativity"
 ---
 
+import { Image } from 'astro:assets';
+import meBaby from '../../assets/photos/me-baby.jpg';
+import pokemon from '../../assets/photos/pokemon.jpg';
+import meGuitar from '../../assets/photos/me-guitar-17.jpg';
+import meCC from '../../assets/photos/me-cc.jpg';
+import goliardia from '../../assets/photos/goliardia.jpg';
+import meMoverio from '../../assets/photos/me-moverio.jpg';
+import gameJam from '../../assets/photos/game-jam.jpg';
+import valenciaTuria from '../../assets/photos/valencia-turia.jpg';
+import remote from '../../assets/photos/remote.jpg';
+import dogs from '../../assets/photos/dogs.jpg';
+import wine from '../../assets/photos/wine.jpg';
+import modica from '../../assets/photos/modica.jpg';
+import meAmanda from '../../assets/photos/me-amanda.jpg';
+
 ## Hello world!
 
 Hi! I’m Lorenzo Iovino.
@@ -16,8 +31,8 @@ This page is a small recap of my story. Nothing special, just me.
 ## Childhood Nostalgia
 
 <div class="float-right img-medium">
-  <img src="/photos/me-baby.jpg" alt="Super young software developer with an Apple II" class="float-right img-medium" />
-  <em class="text-sm block mt-2">Super young software developer with an Apple II</em>
+  <Image src={meBaby} alt="Super young geek with an Apple II" class="float-right img-medium" width={400} height={300} quality={85} format="webp" />
+  <em class="text-sm block mt-2">Super young software geek with an Apple II</em>
 </div>
 
 My first “wow” moment with computers was very early. I was around 4 years old and I was playing Prince of Persia on an Apple II.
@@ -29,7 +44,7 @@ I grew up in Ispica, in the south of Sicily. My days were simple: school, videog
 Ispica is slow, warm, and beautiful. When I was a kid I didn’t see it that way. I wanted to escape. I was dreaming about big cities, more people, more things happening, more opportunities.
 
 <div class="float-left img-medium">
-  <img src="/photos/pokemon.jpg" alt="Pokemon Yellow and Game Boy Advance" class="float-left img-medium" />
+  <Image src={pokemon} alt="Pokemon Yellow and Game Boy Advance" class="float-left img-medium" width={400} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">Pokemon Yellow and Game Boy Advance</em>
 </div>
 
@@ -38,7 +53,7 @@ Then came Pokemon, Nintendo consoles, and long afternoons with friends. And at s
 When I was 15 I discovered rock music and it hit me hard. I bought a guitar and I started learning (very badly at the beginning) but I loved it.
 
 <div class="float-right img-medium">
-  <img src="/photos/me-guitar-17.jpg" alt="My dream guitar Fender stratocaster" class="float-right img-medium" />
+  <Image src={meGuitar} alt="My dream guitar Fender stratocaster" class="float-right img-medium" width={400} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">My dream guitar "Fender stratocaster"</em>
 </div>
 
@@ -51,7 +66,7 @@ At 17 I also discovered Magic: The Gathering. It became another obsession for a 
 I studied Computer Science at the University of Pisa. It was not a straight path.
 
 <div class="float-right img-medium">
-  <img src="/photos/me-cc.jpg" alt="Me burning out studying" class="float-right img-medium" />
+  <Image src={meCC} alt="Me burning out studying" class="float-right img-medium" width={400} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">Me burning out studying Computability and Complexity exam</em>
 </div>
 
@@ -64,7 +79,7 @@ It took me 12 years to finish my Bachelor. Not proud of the timeline, but I’m 
 Moving to Pisa was not only about studying. It was also my first real “life outside Sicily” experience, and I needed that.
 
 <div class="float-left img-medium">
-  <img src="/photos/goliardia.jpg" alt="My student hat goliardo" class="float-left img-medium" />
+  <Image src={goliardia} alt="My student hat goliardo" class="float-left img-medium" width={400} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">My student hat (that's not a hat) "goliardo"</em>
 </div>
 
@@ -75,7 +90,7 @@ That period also started my love for traveling. Seeing different cultures in rea
 ## Embarking on Hackathon Adventures
 
 <div class="float-right img-small">
-  <img src="/photos/me-moverio.jpg" alt="Me wearing moverio smart glasses" class="float-right img-small" />
+  <Image src={meMoverio} alt="Me wearing moverio smart glasses" class="float-right img-small" width={300} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">Me wearing moverio smart glasses</em>
 </div>
 
@@ -88,7 +103,7 @@ It was made for Epson Moverio Smartglass: the idea was to let people “place”
 That experience made me addicted to hackathons. After that I joined other events like Hackaton Toscana (mobility) and also some game jams. Every time you learn something new, and you also learn a lot about teamwork under pressure.
 
 <div class="w-full">
-  <img src="/photos/game-jam.jpg" alt="Me and the team presenting the game" class="img-hero" />
+  <Image src={gameJam} alt="Me and the team presenting the game" class="img-hero" width={1200} height={630} quality={80} format="webp" />
   <em class="text-sm block mt-2">Me and the team presenting the game developed</em>
 </div>
 
@@ -97,7 +112,7 @@ That experience made me addicted to hackathons. After that I joined other events
 ## Erasmus Project in Valencia
 
 <div class="float-right img-large">
-  <img src="/photos/valencia-turia.jpg" alt="Beautiful sunny day in Valencia" class="float-right img-large" />
+  <Image src={valenciaTuria} alt="Beautiful sunny day in Valencia" class="float-right img-large" width={600} height={400} quality={80} format="webp" />
   <em class="text-sm block mt-2">Beautiful sunny day in Valencia</em>
 </div>
 
@@ -116,7 +131,7 @@ At some point I decided to go back to Sicily.
 Not as a “I give up” move. More like: I want a different balance.
 
 <div class="float-left img-medium">
-  <img src="/photos/remote.jpg" alt="Working remote watching the sea" class="float-left img-medium" />
+  <Image src={remote} alt="Working remote watching the sea" class="float-left img-medium" width={400} height={300} quality={80} format="webp" />
   <em class="text-sm block mt-2">Working remote watching the sea</em>
 </div>
 
@@ -127,7 +142,7 @@ I work remote, and Sicily is perfect for that. Life is slower. Sometimes it’s 
 Time here feels different. You can actually breathe. You can have “nothing special” days, and those days can still feel good.
 
 <div class="w-full">
-  <img src="/photos/dogs.jpg" alt="My wineyard" class="img-hero" />
+  <Image src={dogs} alt="My wineyard" class="img-hero" width={1200} height={630} quality={80} format="webp" />
   <em class="text-sm block mt-2">My wineyard</em>
 </div>
 
@@ -136,7 +151,7 @@ Family is a big part of my life here. And I also started a side project with my 
 That project became [www.netum.it](https://netum.it/). It’s small (1 hectare), limited bottles, but it’s something we built together and I love it.
 
 <div class="float-right img-small">
-  <img src="/photos/wine.jpg" alt="The wine produced Zia Lina" class="float-right img-small" />
+  <Image src={wine} alt="The wine produced Zia Lina" class="float-right img-small" width={300} height={300} quality={85} format="webp" />
   <em class="text-sm block mt-2">The wine produced "Zia Lina"</em>
 </div>
 
@@ -147,7 +162,7 @@ And yes: food. Sicily is crazy for food. It’s not even a “food culture”, i
 For me, living here is a reminder: success is not only about projects and code. It’s also about how you live your days.
 
 <div class="w-full">
-  <img src="/photos/modica.jpg" alt="Modica view from my house" class="img-hero" />
+  <Image src={modica} alt="Modica view from my house" class="img-hero" width={1200} height={630} quality={80} format="webp" />
   <em class="text-sm block mt-2">Modica view from my house</em>
 </div>
 
@@ -158,6 +173,6 @@ Today I’m a husband (to my wife Amanda) and a dad (to our little Leonardo).
 Life changed a lot, in a good way. I still love technology, I still build things, but family gives a different meaning to everything.
 
 <div class="w-full">
-  <img src="/photos/me-amanda.jpg" alt="Me and my wife Amanda" class="img-hero" />
+  <Image src={meAmanda} alt="Me and my wife Amanda" class="img-hero" width={1200} height={630} quality={85} format="webp" />
   <em class="text-sm block mt-2">Me and my wife Amanda</em>
 </div>

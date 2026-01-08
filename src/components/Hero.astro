@@ -1,5 +1,8 @@
 ---
-
+import { Image } from "astro:assets";
+import mePhoto from "../assets/photos/me.png";
+import linkedinIcon from "../assets/linkedin.svg";
+import githubIcon from "../assets/github.svg";
 ---
 
 <div class="w-full">
@@ -12,12 +15,14 @@
 					<!-- Photo Section -->
 					<div class="w-full md:w-auto flex-shrink-0 order-2 md:order-none">
 						<div class="relative overflow-hidden md:rounded-l-3xl flex justify-center md:block">
-							<img
-								src="/photos/me.png"
+							<Image
+								src={mePhoto}
 								alt="Photo of Lorenzo Iovino"
 								class="w-48 h-auto md:w-full object-cover object-center"
-								width="300"
-								height="300"
+								width={300}
+								height={300}
+								quality={90}
+								format="webp"
 							/>
 							<div class="absolute inset-0 to-transparent md:bg-gradient-to-r"></div>
 							<div class="absolute inset-0 to-transparent md:bg-gradient-to-r"></div>
@@ -57,12 +62,12 @@
 									class="group relative p-3 bg-gray-50 hover:bg-secondary/10 rounded-xl transition-all duration-200 transform hover:-translate-y-1"
 									aria-label="LinkedIn"
 								>
-									<img
-										src="/linkedin.svg"
+									<Image
+										src={linkedinIcon}
 										alt="LinkedIn"
 										class="h-6 w-6 opacity-70 group-hover:opacity-100 transition-opacity"
-										width="24"
-										height="24"
+										width={24}
+										height={24}
 										loading="lazy"
 									/>
 								</a>
@@ -71,12 +76,12 @@
 									class="group relative p-3 bg-gray-50 hover:bg-secondary/10 rounded-xl transition-all duration-200 transform hover:-translate-y-1"
 									aria-label="GitHub"
 								>
-									<img
-										src="/github.svg"
+									<Image
+										src={githubIcon}
 										alt="GitHub"
 										class="h-6 w-6 opacity-70 group-hover:opacity-100 transition-opacity"
-										width="24"
-										height="24"
+										width={24}
+										height={24}
 										loading="lazy"
 									/>
 								</a>

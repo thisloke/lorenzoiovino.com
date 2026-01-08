@@ -2,7 +2,7 @@
 title: "Welcome to My Blog!"
 description: "First commit"
 pubDate: 2024-01-15
-heroImage: "/photos/remote.jpg"
+heroImage: "../../assets/photos/remote.jpg"
 tags: ["personal", "welcome"]
 ---
 

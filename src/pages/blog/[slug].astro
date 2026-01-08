@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
@@ -18,13 +19,15 @@ export async function getStaticPaths() {
 
 const { entry }: { entry: BlogPost } = Astro.props;
 const { Content } = await entry.render();
+
+// Extract image src for meta tags (Open Graph expects a URL string)
+const heroImageSrc = entry.data.heroImage?.src || "/photos/me.png";
 ---
 
 <BaseLayout
 	title={`${entry.data.title} | Lorenzo Iovino`}
 	description={entry.data.description}
-	canonicalUrl={`https://www.lorenzoiovino.com/blog/${entry.slug}`}
-	image={entry.data.heroImage || "/photos/me.png"}
+	image={heroImageSrc}
 	type="article"
 	publishedTime={entry.data.pubDate}
 	modifiedTime={entry.data.updatedDate}
@@ -69,10 +72,14 @@ const { Content } = await entry.render();
 				entry.data.heroImage && (
 					<div class="mb-8 md:mb-12 -mx-4 sm:mx-0">
 						<div class="relative h-64 sm:h-80 md:h-96 overflow-hidden sm:rounded-2xl shadow-xl">
-							<img
+							<Image
 								src={entry.data.heroImage}
 								alt={entry.data.title}
 								class="w-full h-full object-cover"
+								width={1200}
+								height={630}
+								quality={80}
+								format="webp"
 							/>
 						</div>
 					</div>
@@ -91,6 +98,8 @@ const { Content } = await entry.render();
 						src="/photos/me.png"
 						alt="Lorenzo Iovino"
 						class="w-20 h-20 rounded-full object-cover"
+						width="80"
+						height="80"
 					/>
 					<div>
 						<h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2">Lorenzo Iovino</h3>
