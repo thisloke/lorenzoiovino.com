@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
 import "../../styles/prose.css";
 import mePhoto from "../../assets/photos/me.png";
 
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { entry }: { entry: BlogPost } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 
 // Extract image src for meta tags (Open Graph expects a URL string)
 const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
@@ -36,146 +37,160 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 >
 	<Navbar />
 	<div class="min-h-screen pt-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-		<article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-			<header class="mb-8 md:mb-12">
-				<time
-					datetime={entry.data.pubDate.toISOString()}
-					class="block mb-3 text-sm text-gray-600 dark:text-gray-400"
-				>
-					{
-						entry.data.pubDate.toLocaleDateString("en-US", {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})
-					}
-				</time>
-				{
-					entry.data.tags.length > 0 && (
-						<div class="flex gap-2 flex-wrap mb-4">
-							{entry.data.tags.map((tag: string) => (
-								<a
-									href={`/blog/tag/${tag}`}
-									class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded-lg font-medium hover:bg-gray-900 hover:text-white dark:hover:bg-primary dark:hover:text-gray-900 transition-all duration-200"
-								>
-									{tag}
-								</a>
-							))}
-						</div>
-					)
-				}
-				<h1
-					class="text-gray-900 dark:text-gray-100 mb-4 text-4xl md:text-5xl lg:text-5xl font-bold leading-normal pb-2"
-				>
-					{entry.data.title}
-				</h1>
-				<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-					{entry.data.description}
-				</p>
-			</header>
-
-			{
-				entry.data.heroImage && (
-					<div class="mb-8 md:mb-12 -mx-4 sm:mx-0">
-						<div class="relative h-64 sm:h-80 md:h-96 overflow-hidden sm:rounded-2xl shadow-xl">
-							<Image
-								src={entry.data.heroImage}
-								alt={entry.data.title}
-								class="w-full h-full object-cover"
-								width={824}
-								height={618}
-								quality={80}
-								format="webp"
-								loading="eager"
-								fetchpriority="high"
-							/>
-						</div>
-					</div>
-				)
-			}
-
-			<div
-				class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 lg:p-16 transition-colors duration-200"
-			>
-				<div class="prose prose-xl max-w-none">
-					<Content />
-				</div>
-			</div>
-
-			<div
-				class="mt-8 md:mt-12 bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8 transition-colors duration-200"
-			>
-				<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-					<Image
-						src={mePhoto}
-						alt="Lorenzo Iovino"
-						class="w-20 h-20 rounded-full object-cover flex-shrink-0"
-						width={80}
-						height={80}
-						quality={90}
-						format="webp"
-					/>
-					<div class="text-center sm:text-left">
-						<h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-							Lorenzo Iovino
-						</h3>
-						<p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4">
-							I write software and I also work on a small vineyard in Sicily. In code, trees grow
-							downward from the root. In real life, trees grow upward from the roots. I spend way
-							too much time thinking about this.
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+			<div class="flex gap-8 items-start">
+				<article class="flex-1 max-w-4xl min-w-0">
+					<header class="mb-8 md:mb-12">
+						<time
+							datetime={entry.data.pubDate.toISOString()}
+							class="block mb-3 text-sm text-gray-600 dark:text-gray-400"
+						>
+							{
+								entry.data.pubDate.toLocaleDateString("en-US", {
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								})
+							}
+						</time>
+						{
+							entry.data.tags.length > 0 && (
+								<div class="flex gap-2 flex-wrap mb-4">
+									{entry.data.tags.map((tag: string) => (
+										<a
+											href={`/blog/tag/${tag}`}
+											class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded-lg font-medium hover:bg-gray-900 hover:text-white dark:hover:bg-primary dark:hover:text-gray-900 transition-all duration-200"
+										>
+											{tag}
+										</a>
+									))}
+								</div>
+							)
+						}
+						<h1
+							class="text-gray-900 dark:text-gray-100 mb-4 text-4xl md:text-5xl lg:text-5xl font-bold leading-normal pb-2"
+						>
+							{entry.data.title}
+						</h1>
+						<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+							{entry.data.description}
 						</p>
-						<div class="flex gap-4 justify-center sm:justify-start">
-							<a
-								href="https://www.linkedin.com/in/lorenzoiovino/"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
-								aria-label="Visit Lorenzo Iovino's LinkedIn profile"
-							>
-								<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-									<path
-										d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-									></path>
-								</svg>
-							</a>
-							<a
-								href="https://github.com/thisloke"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
-								aria-label="Visit Lorenzo Iovino's GitHub profile"
-							>
-								<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-									<path
-										d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-									></path>
-								</svg>
-							</a>
+					</header>
+
+					{
+						entry.data.heroImage && (
+							<div class="mb-8 md:mb-12 -mx-4 sm:mx-0">
+								<div class="relative h-64 sm:h-80 md:h-96 overflow-hidden sm:rounded-2xl shadow-xl">
+									<Image
+										src={entry.data.heroImage}
+										alt={entry.data.title}
+										class="w-full h-full object-cover"
+										width={824}
+										height={618}
+										quality={80}
+										format="webp"
+										loading="eager"
+										fetchpriority="high"
+									/>
+								</div>
+							</div>
+						)
+					}
+
+					<!-- Mobile TOC -->
+					<div class="xl:hidden">
+						<TableOfContents headings={headings} variant="mobile" />
+					</div>
+
+					<div
+						class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 lg:p-16 transition-colors duration-200"
+					>
+						<div class="prose prose-xl max-w-none">
+							<Content />
 						</div>
 					</div>
+
+					<div
+						class="mt-8 md:mt-12 bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8 transition-colors duration-200"
+					>
+						<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+							<Image
+								src={mePhoto}
+								alt="Lorenzo Iovino"
+								class="w-20 h-20 rounded-full object-cover flex-shrink-0"
+								width={80}
+								height={80}
+								quality={90}
+								format="webp"
+							/>
+							<div class="text-center sm:text-left">
+								<h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+									Lorenzo Iovino
+								</h3>
+								<p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4">
+									I write software and I also work on a small vineyard in Sicily. In code, trees
+									grow downward from the root. In real life, trees grow upward from the roots. I
+									spend way too much time thinking about this.
+								</p>
+								<div class="flex gap-4 justify-center sm:justify-start">
+									<a
+										href="https://www.linkedin.com/in/lorenzoiovino/"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+										aria-label="Visit Lorenzo Iovino's LinkedIn profile"
+									>
+										<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
+											<path
+												d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+											></path>
+										</svg>
+									</a>
+									<a
+										href="https://github.com/thisloke"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+										aria-label="Visit Lorenzo Iovino's GitHub profile"
+									>
+										<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
+											<path
+												d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+											></path>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt-8 md:mt-12 text-center">
+						<a
+							href="/blog"
+							class="inline-flex items-center px-5 py-2.5 md:px-6 md:py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium rounded-lg md:rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-700"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5 mr-2"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+									clip-rule="evenodd"></path>
+							</svg>
+							Back to Blog
+						</a>
+					</div>
+				</article>
+
+				<!-- Desktop TOC Sidebar -->
+				<div class="hidden xl:block flex-shrink-0 self-start sticky top-24">
+					<TableOfContents headings={headings} variant="desktop" />
 				</div>
 			</div>
-
-			<div class="mt-8 md:mt-12 text-center">
-				<a
-					href="/blog"
-					class="inline-flex items-center px-5 py-2.5 md:px-6 md:py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium rounded-lg md:rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-700"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5 mr-2"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-							clip-rule="evenodd"></path>
-					</svg>
-					Back to Blog
-				</a>
-			</div>
-		</article>
+		</div>
 	</div>
 	<Footer />
 </BaseLayout>

@@ -118,7 +118,7 @@ const displayTag: string = tag.charAt(0).toUpperCase() + tag.slice(1);
 											<>
 												<span>•</span>
 												<div class="flex gap-2 flex-wrap">
-													{post.data.tags.slice(0, 3).map((postTag: string) => (
+													{post.data.tags.map((postTag: string) => (
 														<a
 															href={`/blog/tag/${postTag}`}
 															class={`px-2 py-1 text-xs rounded-lg font-medium transition-all duration-200 ${

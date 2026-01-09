@@ -50,7 +50,7 @@
 }
 
 .prose h3 {
-	font-size: 1.5rem !important;
+	font-size: 1.35rem !important;
 	font-weight: 700 !important;
 	color: #111827 !important;
 	margin-top: 3rem !important;
@@ -65,7 +65,7 @@
 
 @media (min-width: 768px) {
 	.prose h3 {
-		font-size: 1.875rem !important;
+		font-size: 1.5rem !important;
 	}
 }
 

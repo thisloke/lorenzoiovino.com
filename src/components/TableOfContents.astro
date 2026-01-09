@@ -1,0 +1,318 @@
+---
+export interface Props {
+	headings: { depth: number; slug: string; text: string }[];
+	variant?: "mobile" | "desktop";
+}
+
+const { headings, variant = "desktop" } = Astro.props;
+
+// Filter to only show h2 and h3
+const tocHeadings = headings.filter((h) => h.depth <= 3);
+---
+
+{
+	tocHeadings.length > 0 && (
+		<>
+			{/* Mobile TOC - Sticky Floating Button with Slide-out Panel */}
+			{variant === "mobile" && (
+				<>
+					{/* Floating Button */}
+					<button
+						id="mobile-toc-toggle"
+						class="fixed bottom-6 right-6 z-40 p-3 bg-primary dark:bg-emerald-500 text-gray-900 dark:text-gray-900 rounded-full shadow-lg hover:scale-110 transition-all duration-200 flex items-center gap-2"
+						aria-label="Toggle table of contents"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"
+							/>
+						</svg>
+					</button>
+
+					{/* Slide-out Panel Overlay */}
+					<div
+						id="mobile-toc-overlay"
+						class="fixed inset-0 bg-black/50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"
+					/>
+
+					{/* Slide-out Panel */}
+					<div
+						id="mobile-toc-panel"
+						class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-gray-800 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 overflow-y-auto"
+					>
+						<div class="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between">
+							<h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+								<svg
+									class="w-5 h-5 text-gray-600 dark:text-gray-400"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 6h16M4 12h16M4 18h16"
+									/>
+								</svg>
+								Table of Contents
+							</h2>
+							<button
+								id="mobile-toc-close"
+								class="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+								aria-label="Close table of contents"
+							>
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M6 18L18 6M6 6l12 12"
+									/>
+								</svg>
+							</button>
+						</div>
+						<nav class="p-4">
+							<ul class="space-y-1">
+								{tocHeadings.map((heading) => (
+									<li
+										class:list={[
+											{
+												"pl-0": heading.depth === 2,
+												"pl-6": heading.depth === 3,
+											},
+										]}
+									>
+										<a
+											href={`#${heading.slug}`}
+											class="mobile-toc-link block py-2.5 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+											data-mobile-heading={heading.slug}
+										>
+											{heading.text}
+										</a>
+									</li>
+								))}
+							</ul>
+						</nav>
+					</div>
+				</>
+			)}
+
+			{/* Desktop TOC - Sticky Sidebar */}
+			{variant === "desktop" && (
+				<aside class="sticky top-24 self-start">
+					<nav class="toc-nav max-h-[calc(100vh-8rem)] overflow-y-auto">
+						<h2 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
+							On This Page
+						</h2>
+						<ul class="space-y-2 text-sm border-l-2 border-gray-200 dark:border-gray-700">
+							{tocHeadings.map((heading) => (
+								<li
+									class:list={[
+										"border-l-2 -ml-[2px]",
+										{
+											"pl-4": heading.depth === 2,
+											"pl-8": heading.depth === 3,
+										},
+									]}
+								>
+									<a
+										href={`#${heading.slug}`}
+										class="toc-link block py-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200"
+										data-heading={heading.slug}
+									>
+										{heading.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</aside>
+			)}
+		</>
+	)
+}
+
+<style>
+	aside {
+		width: 240px;
+		min-width: 240px;
+	}
+
+	.toc-nav {
+		padding-right: 1rem;
+	}
+
+	.toc-link.active {
+		color: rgb(46 129 255);
+		border-left-color: rgb(46 129 255);
+		font-weight: 500;
+	}
+
+	:global(.dark) .toc-link.active {
+		color: rgb(52 211 153);
+		border-left-color: rgb(52 211 153);
+	}
+
+	/* Custom scrollbar for desktop TOC */
+	.toc-nav::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.toc-nav::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.toc-nav::-webkit-scrollbar-thumb {
+		background: rgb(209 213 219);
+		border-radius: 2px;
+	}
+
+	:global(.dark) .toc-nav::-webkit-scrollbar-thumb {
+		background: rgb(55 65 81);
+	}
+
+	/* Mobile TOC active state */
+	.mobile-toc-link.active {
+		background-color: rgb(243 244 246);
+		color: rgb(46 129 255);
+		font-weight: 500;
+	}
+
+	:global(.dark) .mobile-toc-link.active {
+		background-color: rgb(55 65 81);
+		color: rgb(52 211 153);
+	}
+
+	/* Panel open states */
+	#mobile-toc-panel.open {
+		transform: translateX(0);
+	}
+
+	#mobile-toc-overlay.open {
+		opacity: 1;
+		pointer-events: auto;
+	}
+</style>
+
+<script>
+	function initTableOfContents() {
+		// Desktop TOC observer
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const id = entry.target.getAttribute("id");
+					const tocLink = document.querySelector(`.toc-link[data-heading="${id}"]`);
+					const mobileTocLink = document.querySelector(
+						`.mobile-toc-link[data-mobile-heading="${id}"]`
+					);
+
+					if (entry.isIntersecting) {
+						// Remove active class from all links
+						document.querySelectorAll(".toc-link").forEach((link) => {
+							link.classList.remove("active");
+						});
+						document.querySelectorAll(".mobile-toc-link").forEach((link) => {
+							link.classList.remove("active");
+						});
+						// Add active class to current link
+						if (tocLink) {
+							tocLink.classList.add("active");
+						}
+						if (mobileTocLink) {
+							mobileTocLink.classList.add("active");
+						}
+					}
+				});
+			},
+			{
+				rootMargin: "-100px 0px -66%",
+				threshold: 1.0,
+			}
+		);
+
+		// Observe all headings
+		document.querySelectorAll("h2[id], h3[id]").forEach((heading) => {
+			observer.observe(heading);
+		});
+
+		// Smooth scroll for desktop TOC links
+		document.querySelectorAll(".toc-link").forEach((link) => {
+			link.addEventListener("click", (e) => {
+				e.preventDefault();
+				const targetId = link.getAttribute("href")?.slice(1);
+				const targetElement = document.getElementById(targetId || "");
+				if (targetElement) {
+					const offset = 100;
+					const elementPosition = targetElement.getBoundingClientRect().top;
+					const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: "smooth",
+					});
+				}
+			});
+		});
+
+		// Mobile TOC functionality
+		const toggleButton = document.getElementById("mobile-toc-toggle");
+		const closeButton = document.getElementById("mobile-toc-close");
+		const panel = document.getElementById("mobile-toc-panel");
+		const overlay = document.getElementById("mobile-toc-overlay");
+
+		function openPanel() {
+			panel?.classList.add("open");
+			overlay?.classList.add("open");
+			document.body.style.overflow = "hidden";
+		}
+
+		function closePanel() {
+			panel?.classList.remove("open");
+			overlay?.classList.remove("open");
+			document.body.style.overflow = "";
+		}
+
+		toggleButton?.addEventListener("click", openPanel);
+		closeButton?.addEventListener("click", closePanel);
+		overlay?.addEventListener("click", closePanel);
+
+		// Smooth scroll for mobile TOC links
+		document.querySelectorAll(".mobile-toc-link").forEach((link) => {
+			link.addEventListener("click", (e) => {
+				e.preventDefault();
+				const targetId = link.getAttribute("href")?.slice(1);
+				const targetElement = document.getElementById(targetId || "");
+				if (targetElement) {
+					const offset = 80;
+					const elementPosition = targetElement.getBoundingClientRect().top;
+					const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: "smooth",
+					});
+
+					// Close the panel after clicking
+					closePanel();
+				}
+			});
+		});
+
+		// Close panel on escape key
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && panel?.classList.contains("open")) {
+				closePanel();
+			}
+		});
+	}
+
+	// Initialize on page load
+	initTableOfContents();
+
+	// Re-initialize after view transitions (if using Astro view transitions)
+	document.addEventListener("astro:after-swap", initTableOfContents);
+</script>
