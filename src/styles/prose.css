@@ -4,6 +4,10 @@
 	line-height: 1.875 !important;
 }
 
+.dark .prose {
+	color: #d1d5db !important;
+}
+
 .prose h2 {
 	font-size: 2.25rem !important;
 	font-weight: 700 !important;
@@ -16,10 +20,13 @@
 	padding-bottom: 1rem !important;
 }
 
+.dark .prose h2 {
+	color: #f3f4f6 !important;
+}
+
 .prose > h2:first-child {
 	margin-top: 0 !important;
 }
-
 
 .prose h2::after {
 	content: "";
@@ -30,6 +37,10 @@
 	height: 3px;
 	background: linear-gradient(90deg, #374151 0%, #6b7280 100%);
 	border-radius: 2px;
+}
+
+.dark .prose h2::after {
+	background: linear-gradient(90deg, #f9bc2e 0%, #fbd46c 100%);
 }
 
 @media (min-width: 768px) {
@@ -48,6 +59,10 @@
 	letter-spacing: -0.01em !important;
 }
 
+.dark .prose h3 {
+	color: #f3f4f6 !important;
+}
+
 @media (min-width: 768px) {
 	.prose h3 {
 		font-size: 1.875rem !important;
@@ -63,6 +78,10 @@
 	line-height: 1.4 !important;
 }
 
+.dark .prose h4 {
+	color: #f3f4f6 !important;
+}
+
 @media (min-width: 768px) {
 	.prose h4 {
 		font-size: 1.5rem !important;
@@ -76,6 +95,10 @@
 	font-weight: 400 !important;
 }
 
+.dark .prose p {
+	color: #d1d5db !important;
+}
+
 @media (min-width: 768px) {
 	.prose p {
 		font-size: 1.1rem !important;
@@ -83,8 +106,7 @@
 }
 
 .prose > p:first-of-type {
-
-	margin-top: 1.6rem
+	margin-top: 1.6rem;
 }
 
 @media (min-width: 768px) {
@@ -102,9 +124,18 @@
 	transition: all 0.2s ease !important;
 }
 
+.dark .prose a {
+	color: #d1d5db !important;
+}
+
 .prose a:hover {
 	color: #111827 !important;
 	text-decoration-color: #111827 !important;
+}
+
+.dark .prose a:hover {
+	color: #f3f4f6 !important;
+	text-decoration-color: #f9bc2e !important;
 }
 
 .prose strong {
@@ -112,9 +143,17 @@
 	color: #111827 !important;
 }
 
+.dark .prose strong {
+	color: #f3f4f6 !important;
+}
+
 .prose em {
 	font-style: italic !important;
 	color: #4b5563 !important;
+}
+
+.dark .prose em {
+	color: #9ca3af !important;
 }
 
 .prose ul,
@@ -140,6 +179,10 @@
 	margin-bottom: 0.75rem !important;
 }
 
+.dark .prose li {
+	color: #d1d5db !important;
+}
+
 @media (min-width: 768px) {
 	.prose li {
 		font-size: 1.1rem !important;
@@ -149,6 +192,10 @@
 .prose li::marker {
 	color: #6b7280 !important;
 	font-weight: 600 !important;
+}
+
+.dark .prose li::marker {
+	color: #9ca3af !important;
 }
 
 .prose blockquote {
@@ -163,6 +210,12 @@
 	line-height: 1.6 !important;
 }
 
+.dark .prose blockquote {
+	border-left-color: #9ca3af !important;
+	background-color: #374151 !important;
+	color: #d1d5db !important;
+}
+
 .prose code {
 	background-color: #f3f4f6 !important;
 	color: #374151 !important;
@@ -170,8 +223,14 @@
 	border-radius: 0.375rem !important;
 	font-size: 1rem !important;
 	font-weight: 600 !important;
-	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-		"Courier New", monospace !important;
+	font-family:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+		monospace !important;
+}
+
+.dark .prose code {
+	background-color: #374151 !important;
+	color: #f3f4f6 !important;
 }
 
 .prose pre {
@@ -195,6 +254,10 @@
 	margin-bottom: 4rem !important;
 	border-color: #e5e7eb !important;
 	border-width: 2px !important;
+}
+
+.dark .prose hr {
+	border-color: #4b5563 !important;
 }
 
 .prose img {
@@ -237,11 +300,19 @@
 	border-bottom: 2px solid #e5e7eb !important;
 }
 
+.dark .prose thead {
+	border-bottom-color: #4b5563 !important;
+}
+
 .prose th {
 	padding: 0.75rem 1rem !important;
 	text-align: left !important;
 	font-weight: 600 !important;
 	color: #111827 !important;
+}
+
+.dark .prose th {
+	color: #f3f4f6 !important;
 }
 
 .prose td {
@@ -250,8 +321,17 @@
 	color: #374151 !important;
 }
 
+.dark .prose td {
+	border-bottom-color: #4b5563 !important;
+	color: #d1d5db !important;
+}
+
 .prose tbody tr:hover {
 	background-color: #f9fafb !important;
+}
+
+.dark .prose tbody tr:hover {
+	background-color: #374151 !important;
 }
 
 /* Image Utility Classes */
@@ -361,6 +441,12 @@
 	line-height: 1.4 !important;
 	max-width: 100% !important;
 	word-wrap: break-word !important;
+}
+
+.dark .prose div.float-left em,
+.dark .prose div.float-right em,
+.dark .prose div.w-full em {
+	color: #9ca3af !important;
 }
 
 @media (min-width: 768px) {

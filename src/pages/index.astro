@@ -6,19 +6,18 @@ import Navbar from "../components/Navbar.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout
-	title="Lorenzo Iovino >> Homepage   "
-	description="Lorenzo Iovino - Software Engineer"
->
+<BaseLayout title="Lorenzo Iovino >> Homepage   " description="Lorenzo Iovino - Software Engineer">
 	<Navbar />
-	<div class="bg-secondary min-h-screen flex flex-col relative pt-16">
+	<div
+		class="bg-secondary dark:bg-gray-900 min-h-screen flex flex-col relative pt-16 transition-colors duration-200"
+	>
 		<div class="flex-grow flex items-center justify-center relative z-10 py-12">
 			<Hero />
 		</div>
 		<div class="relative">
 			<div
 				class="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
-				style="height: 100px; margin-bottom: 0;"
+				style="height: 110px; margin-bottom: 0;"
 			>
 				<Fish />
 			</div>

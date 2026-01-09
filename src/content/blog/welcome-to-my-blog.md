@@ -1,7 +1,7 @@
 ---
 title: "Welcome to My Blog!"
 description: "First commit"
-pubDate: 2024-01-15
+pubDate: 2026-01-08
 heroImage: "../../assets/photos/remote.jpg"
 tags: ["personal", "welcome"]
 ---
@@ -9,7 +9,7 @@ tags: ["personal", "welcome"]
 Hi, I’m Lorenzo.
 
 I’ve been thinking about writing for a long time, and I finally decided to publish this blog.
-Not to be “a creator” or something like that — just to keep track of what I learn and share it with whoever finds it useful.
+Not to be “a creator” or something like that, just to keep track of what I learn and share it with whoever finds it useful.
 
 ## What you will find here
 

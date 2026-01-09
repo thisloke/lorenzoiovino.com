@@ -21,7 +21,7 @@ const allTags: Record<string, number> = sortedPosts.reduce(
 		});
 		return acc;
 	},
-	{} as Record<string, number>,
+	{} as Record<string, number>
 );
 
 const sortedTags: TagCount[] = Object.entries(allTags)
@@ -31,31 +31,30 @@ const sortedTags: TagCount[] = Object.entries(allTags)
 const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 ---
 
-<BaseLayout
-	title="Lorenzo Iovino >> Blog"
-	description="Blog posts and articles by Lorenzo Iovino"
->
+<BaseLayout title="Lorenzo Iovino >> Blog" description="Blog posts and articles by Lorenzo Iovino">
 	<Navbar />
-	<div class="min-h-screen pt-16 bg-secondary">
+	<div class="min-h-screen pt-16 bg-secondary dark:bg-gray-900 transition-colors duration-200">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
 			<div class="mb-16 text-center">
-				<h1 class="text-gray-800 mb-4">Blog</h1>
-				<p class="text-xl text-gray-800/90 max-w-2xl mx-auto">
+				<h1 class="text-gray-800 dark:text-gray-100 mb-4">Blog</h1>
+				<p class="text-xl text-gray-800/90 dark:text-gray-300 max-w-2xl mx-auto">
 					Thoughts, experiences, and insights about software engineering, technology, and life
 				</p>
-				<div class="h-1 w-20 bg-gray-800 rounded-full mx-auto mt-6"></div>
+				<div class="h-1 w-20 bg-gray-800 dark:bg-primary rounded-full mx-auto mt-6"></div>
 			</div>
 
 			<div class="mb-12">
-				<div class="bg-white rounded-2xl shadow-soft-lg overflow-hidden">
+				<div
+					class="bg-white dark:bg-gray-800 rounded-2xl shadow-soft-lg overflow-hidden transition-colors duration-200"
+				>
 					<button
 						id="toggle-tags"
-						class="w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+						class="w-full p-6 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
 					>
 						<div class="flex items-center gap-3">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6 text-secondary-700"
+								class="h-6 w-6 text-secondary-700 dark:text-primary"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -67,12 +66,12 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 									d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
 								></path>
 							</svg>
-							<h2 class="text-xl font-bold text-gray-900">Filter by Topic</h2>
+							<h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Filter by Topic</h2>
 						</div>
 						<svg
 							id="chevron-icon"
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-6 w-6 text-gray-400 transition-transform duration-200"
+							class="h-6 w-6 text-gray-400 dark:text-gray-500 transition-transform duration-200"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -88,7 +87,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 						<div class="flex flex-wrap gap-2">
 							<a
 								href="/blog"
-								class="inline-block px-4 py-2 bg-secondary text-white rounded-lg font-medium transition-all duration-200 hover:bg-secondary/90"
+								class="inline-block px-4 py-2 bg-secondary dark:bg-primary text-white dark:text-gray-900 rounded-lg font-medium transition-all duration-200 hover:bg-secondary/90 dark:hover:bg-primary/90"
 							>
 								All Posts ({sortedPosts.length})
 							</a>
@@ -96,7 +95,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 								sortedTags.map(({ tag, count }: TagCount) => (
 									<a
 										href={`/blog/tag/${tag}`}
-										class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-secondary hover:text-white"
+										class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg font-medium transition-all duration-200 hover:bg-secondary hover:text-white dark:hover:bg-primary dark:hover:text-gray-900"
 									>
 										{tag} ({count})
 									</a>
@@ -110,7 +109,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 			<div id="posts-container" class="space-y-8">
 				{
 					initialPosts.map((post: BlogPost) => (
-						<article class="bg-white rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-shadow duration-300">
+						<article class="bg-white dark:bg-gray-800 rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-all duration-300">
 							<div class="block">
 								{post.data.heroImage && (
 									<a href={`/blog/${post.slug}`} class="block">
@@ -129,7 +128,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 									</a>
 								)}
 								<div class="p-8">
-									<div class="flex items-center gap-3 mb-4 text-sm text-gray-500">
+									<div class="flex items-center gap-3 mb-4 text-sm text-gray-500 dark:text-gray-400">
 										<time datetime={post.data.pubDate.toISOString()}>
 											{post.data.pubDate.toLocaleDateString("en-US", {
 												year: "numeric",
@@ -144,7 +143,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 													{post.data.tags.slice(0, 3).map((tag: string) => (
 														<a
 															href={`/blog/tag/${tag}`}
-															class="px-2 py-1 bg-secondary/10 text-gray-800 text-xs rounded-lg font-medium hover:bg-secondary hover:text-white transition-all duration-200"
+															class="px-2 py-1 bg-secondary/10 dark:bg-primary/20 text-gray-800 dark:text-gray-200 text-xs rounded-lg font-medium hover:bg-secondary hover:text-white dark:hover:bg-primary dark:hover:text-gray-900 transition-all duration-200"
 														>
 															{tag}
 														</a>
@@ -154,13 +153,13 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 										)}
 									</div>
 									<a href={`/blog/${post.slug}`} class="block group">
-										<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-secondary-700 transition-colors">
+										<h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-secondary-700 dark:group-hover:text-primary transition-colors">
 											{post.data.title}
 										</h2>
-										<p class="text-gray-700 text-lg leading-relaxed mb-4">
+										<p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
 											{post.data.description}
 										</p>
-										<div class="flex items-center text-secondary-800 font-medium">
+										<div class="flex items-center text-secondary-800 dark:text-primary font-medium">
 											Read more
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -185,14 +184,14 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 
 			<div id="loading" class="hidden text-center py-8">
 				<div
-					class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"
+					class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-800 dark:border-gray-200 border-t-transparent"
 				>
 				</div>
-				<p class="text-white mt-4">Loading more posts...</p>
+				<p class="text-gray-800 dark:text-gray-200 mt-4">Loading more posts...</p>
 			</div>
 
 			<div id="end-message" class="hidden text-center py-8">
-				<p class="text-white/80 text-lg">You've reached the end! 🎉</p>
+				<p class="text-gray-800/80 dark:text-gray-200/80 text-lg">You've reached the end! 🎉</p>
 			</div>
 		</div>
 	</div>
@@ -211,7 +210,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 	function createPostElement(post) {
 		const article = document.createElement("article");
 		article.className =
-			"bg-white rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-shadow duration-300";
+			"bg-white dark:bg-gray-800 rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-all duration-300";
 
 		const heroImageHTML = post.data.heroImage
 			? `
@@ -237,7 +236,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 					.slice(0, 3)
 					.map(
 						(tag) =>
-							`<a href="/blog/tag/${tag}" class="px-2 py-1 bg-secondary/10 text-secondary-700 text-xs rounded-lg font-medium hover:bg-secondary hover:text-white transition-all duration-200">${tag}</a>`
+							`<a href="/blog/tag/${tag}" class="px-2 py-1 bg-secondary/10 dark:bg-primary/20 text-gray-800 dark:text-gray-200 text-xs rounded-lg font-medium hover:bg-secondary hover:text-white dark:hover:bg-primary dark:hover:text-gray-900 transition-all duration-200">${tag}</a>`
 					)
 					.join("")}
 			</div>
@@ -255,20 +254,20 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 			<div class="block">
 				${heroImageHTML}
 				<div class="p-8">
-					<div class="flex items-center gap-3 mb-4 text-sm text-gray-500">
+					<div class="flex items-center gap-3 mb-4 text-sm text-gray-500 dark:text-gray-400">
 						<time datetime="${pubDate.toISOString()}">
 							${formattedDate}
 						</time>
 						${tagsHTML}
 					</div>
 					<a href="/blog/${post.slug}" class="block group">
-						<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-secondary-700 transition-colors">
+						<h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-secondary-700 dark:group-hover:text-primary transition-colors">
 							${post.data.title}
 						</h2>
-						<p class="text-gray-700 text-lg leading-relaxed mb-4">
+						<p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
 							${post.data.description}
 						</p>
-						<div class="flex items-center text-secondary font-medium">
+						<div class="flex items-center text-secondary dark:text-primary font-medium">
 							Read more
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

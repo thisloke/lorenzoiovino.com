@@ -35,10 +35,13 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 	tags={entry.data.tags}
 >
 	<Navbar />
-	<div class="min-h-screen pt-16 bg-gray-50">
+	<div class="min-h-screen pt-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
 		<article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 			<header class="mb-8 md:mb-12">
-				<time datetime={entry.data.pubDate.toISOString()} class="block mb-3 text-sm text-gray-600">
+				<time
+					datetime={entry.data.pubDate.toISOString()}
+					class="block mb-3 text-sm text-gray-600 dark:text-gray-400"
+				>
 					{
 						entry.data.pubDate.toLocaleDateString("en-US", {
 							year: "numeric",
@@ -53,7 +56,7 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 							{entry.data.tags.map((tag: string) => (
 								<a
 									href={`/blog/tag/${tag}`}
-									class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs rounded-lg font-medium hover:bg-gray-900 hover:text-white transition-all duration-200"
+									class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs rounded-lg font-medium hover:bg-gray-900 hover:text-white dark:hover:bg-primary dark:hover:text-gray-900 transition-all duration-200"
 								>
 									{tag}
 								</a>
@@ -61,10 +64,12 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 						</div>
 					)
 				}
-				<h1 class="text-gray-900 mb-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+				<h1
+					class="text-gray-900 dark:text-gray-100 mb-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+				>
 					{entry.data.title}
 				</h1>
-				<p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
+				<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
 					{entry.data.description}
 				</p>
 			</header>
@@ -87,13 +92,17 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 				)
 			}
 
-			<div class="bg-white rounded-xl md:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 lg:p-16">
+			<div
+				class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 lg:p-16 transition-colors duration-200"
+			>
 				<div class="prose prose-xl max-w-none">
 					<Content />
 				</div>
 			</div>
 
-			<div class="mt-8 md:mt-12 bg-white rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8">
+			<div
+				class="mt-8 md:mt-12 bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8 transition-colors duration-200"
+			>
 				<div class="flex items-start gap-6">
 					<Image
 						src={mePhoto}
@@ -105,8 +114,10 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 						format="webp"
 					/>
 					<div>
-						<h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2">Lorenzo Iovino</h3>
-						<p class="text-sm md:text-base text-gray-700 mb-4">
+						<h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+							Lorenzo Iovino
+						</h3>
+						<p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4">
 							Software Engineer based in Sicily, passionate about technology, remote work, and life
 							balance. When not coding, you'll find me working on my vineyard or exploring the
 							beautiful Sicilian countryside.
@@ -116,7 +127,7 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 								href="https://www.linkedin.com/in/lorenzoiovino/"
 								target="_blank"
 								rel="noopener noreferrer"
-								class="text-gray-600 hover:text-gray-900 transition-colors"
+								class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
 								aria-label="Visit Lorenzo Iovino's LinkedIn profile"
 							>
 								<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -129,7 +140,7 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 								href="https://github.com/thisloke"
 								target="_blank"
 								rel="noopener noreferrer"
-								class="text-gray-600 hover:text-gray-900 transition-colors"
+								class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
 								aria-label="Visit Lorenzo Iovino's GitHub profile"
 							>
 								<svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -146,7 +157,7 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 			<div class="mt-8 md:mt-12 text-center">
 				<a
 					href="/blog"
-					class="inline-flex items-center px-5 py-2.5 md:px-6 md:py-3 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-lg md:rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200"
+					class="inline-flex items-center px-5 py-2.5 md:px-6 md:py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium rounded-lg md:rounded-xl transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-700"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

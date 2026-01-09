@@ -5,29 +5,31 @@ import tailwindIcon from "../assets/tailwind.svg";
 import githubIcon from "../assets/github.svg";
 ---
 
-<div class="w-full bg-secondary py-2 px-4">
-	<div class="max-w-6xl mx-auto flex justify-between flex-col-reverse sm:flex-row gap-4 sm:items-end items-center">
-		<div class="text-center sm:text-left text-gray-800 flex flex-col items-center sm:items-start">
-			<div class="flex flex-wrap items-center gap-3 text-sm">
-				<span class="font-medium text-gray-800">Lorenzo Iovino</span>
-				<span class="text-gray-800">•</span>
+<div class="w-full bg-secondary dark:bg-gray-800 py-8 px-4 transition-colors duration-200">
+	<div
+		class="max-w-6xl mx-auto flex justify-between flex-col-reverse sm:flex-row gap-4 sm:items-end items-center"
+	>
+		<div
+			class="text-center sm:text-left text-gray-800 dark:text-gray-200 flex flex-col items-center sm:items-start"
+		>
+			<div class="flex flex-wrap items-center gap-1 md:gap-3 text-xs">
 				<a
 					href="/rss.xml"
-					class="transition-colors duration-200 inline-flex items-center gap-1"
+					class="transition-colors duration-200 inline-flex items-center gap-1 hover:text-gray-600 dark:hover:text-gray-300"
 					title="RSS Feed"
 				>
 					RSS
 				</a>
-				<span class="text-gray-800">•</span>
+				<span class="text-gray-800 dark:text-gray-400">•</span>
 				<a
 					href="/sitemap-index.xml"
-					class="transition-colors duration-200"
+					class="transition-colors duration-200 hover:text-gray-600 dark:hover:text-gray-300"
 					title="Sitemap">Sitemap</a
 				>
-				<span class="text-gray-800">•</span>
+				<span class="text-gray-800 dark:text-gray-400">•</span>
 				<a
 					href="https://www.iubenda.com/privacy-policy/98687046"
-					class="transition-colors duration-200 iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe"
+					class="transition-colors duration-200 iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe hover:text-gray-600 dark:hover:text-gray-300"
 					title="Privacy Policy">Privacy Policy</a
 				>
 				<script is:inline type="text/javascript">
@@ -47,11 +49,11 @@ import githubIcon from "../assets/github.svg";
 						}
 					})(window, document);
 				</script>
-				<span class="text-gray-800">•</span>
+				<span class="text-gray-800 dark:text-gray-400">•</span>
 
 				<a
 					href="https://www.iubenda.com/privacy-policy/98687046/cookie-policy"
-					class="transition-colors duration-200 iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe"
+					class="transition-colors duration-200 iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe hover:text-gray-600 dark:hover:text-gray-300"
 					title="Cookie Policy">Cookie Policy</a
 				>
 				<script is:inline type="text/javascript">
@@ -73,53 +75,14 @@ import githubIcon from "../assets/github.svg";
 				</script>
 			</div>
 		</div>
-		<div class="text-center sm:text-right text-gray-800 text-sm">
-			<div class="flex flex-col gap-1">
-				<div class="flex items-center justify-center sm:justify-end gap-1 flex-wrap">
-					<span>Made with</span>
-					<a
-						href="https://astro.build/"
-						class="inline-flex items-center transition-all duration-200"
-						aria-label="Astro"
-					>
-						<Image
-							class="h-5 w-5"
-							src={astroIcon}
-							width={20}
-							height={20}
-							loading="lazy"
-							alt=""
-						/>
-					</a>
-					<span>and</span>
-					<a
-						href="https://tailwindcss.com/"
-						class="inline-flex items-center center  transition-all duration-200"
-						aria-label="TailwindCSS"
-					>
-						<Image
-							class="h-5 w-5"
-							src={tailwindIcon}
-							width={20}
-							height={20}
-							loading="lazy"
-							alt=""
-						/>
-					</a>
-				</div>
+		<div class="text-center sm:text-right text-gray-800 dark:text-gray-200 text-xs">
+			<div class="flex flex-col">
 				<a
 					href="https://github.com/thisloke/lorenzoiovino.com"
-					class="transition-colors duration-200 inline-flex items-center justify-center sm:justify-end gap-2 font-medium"
+					class="transition-colors duration-200 inline-flex items-center justify-center sm:justify-end gap-2 font-medium hover:text-gray-600 dark:hover:text-gray-300"
 				>
 					<span>Check the source code</span>
-					<Image
-						src={githubIcon}
-						class="h-5 w-5"
-						width={20}
-						height={20}
-						loading="lazy"
-						alt=""
-					/>
+					<Image src={githubIcon} class="h-5 w-5" width={20} height={20} loading="lazy" alt="" />
 				</a>
 			</div>
 		</div>
