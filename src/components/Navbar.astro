@@ -134,6 +134,7 @@ const currentPath = Astro.url.pathname;
 	<div
 		id="mobile-menu"
 		class="hidden md:hidden bg-secondary dark:bg-gray-800 transition-colors duration-200"
+		style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out;"
 	>
 		<div class="px-4 py-3 space-y-3">
 			<a
@@ -176,7 +177,15 @@ const currentPath = Astro.url.pathname;
 	const mobileMenu = document.getElementById("mobile-menu");
 
 	mobileMenuButton?.addEventListener("click", () => {
-		mobileMenu?.classList.toggle("hidden");
+		if (mobileMenu?.classList.contains("hidden")) {
+			mobileMenu.classList.remove("hidden");
+			mobileMenu.style.maxHeight = "500px";
+		} else if (mobileMenu) {
+			mobileMenu.style.maxHeight = "0";
+			setTimeout(() => {
+				mobileMenu?.classList.add("hidden");
+			}, 300);
+		}
 	});
 
 	// Theme toggle functionality

@@ -10,24 +10,26 @@ import githubIcon from "../assets/github.svg";
 		<div class="mx-auto max-w-5xl">
 			<div
 				class="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 shadow-soft-lg hover:shadow-soft-lg transition-all duration-300"
+				style="min-height: 300px;"
 			>
 				<div class="relative flex flex-col md:flex-row items-center md:items-end">
 					<!-- Photo Section -->
 					<div class="w-full md:w-auto flex-shrink-0 order-2 md:order-none">
-						<div class="relative overflow-hidden md:rounded-l-3xl flex justify-center md:block">
+						<div
+							class="relative overflow-hidden md:rounded-l-3xl flex justify-center md:block md:w-[300px]"
+						>
 							<Image
 								src={mePhoto}
 								alt="Photo of Lorenzo Iovino"
-								class="w-48 h-auto md:w-full object-cover object-center"
+								class="w-48 h-48 md:w-[300px] md:h-[300px] object-cover object-center"
 								width={300}
 								height={300}
 								quality={90}
 								format="webp"
 								loading="eager"
 								fetchpriority="high"
+								decoding="sync"
 							/>
-							<div class="absolute inset-0 to-transparent md:bg-gradient-to-r"></div>
-							<div class="absolute inset-0 to-transparent md:bg-gradient-to-r"></div>
 						</div>
 					</div>
 
@@ -36,7 +38,7 @@ import githubIcon from "../assets/github.svg";
 						<div class="space-y-4 md:space-y-6">
 							<!-- Greeting -->
 							<div class="text-center md:text-left">
-								<h1 class="mb-3 text-gray-900 dark:text-gray-100">
+								<h1 class="mb-3 text-gray-900 dark:text-gray-100" style="min-height: 2.5rem;">
 									Hey, I'm <span class="text-gray-900 dark:text-gray-100 font-extrabold"
 										>Lorenzo</span
 									>!

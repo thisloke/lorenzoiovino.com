@@ -108,7 +108,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 
 			<div id="posts-container" class="space-y-8">
 				{
-					initialPosts.map((post: BlogPost) => (
+					initialPosts.map((post: BlogPost, index: number) => (
 						<article class="bg-white dark:bg-gray-800 rounded-2xl shadow-soft-lg overflow-hidden hover:shadow-soft-lg transition-all duration-300">
 							<div class="block">
 								{post.data.heroImage && (
@@ -118,10 +118,12 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 												src={post.data.heroImage}
 												alt={post.data.title}
 												class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-												width={1200}
-												height={630}
-												quality={70}
+												width={760}
+												height={570}
+												quality={80}
 												format="webp"
+												loading={index === 0 ? "eager" : "lazy"}
+												fetchpriority={index === 0 ? "high" : undefined}
 											/>
 											<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 										</div>
@@ -159,7 +161,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 										<p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
 											{post.data.description}
 										</p>
-										<div class="flex items-center text-secondary-800 dark:text-primary font-medium">
+										<div class="flex items-center text-secondary-700 dark:text-primary font-medium">
 											Read more
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -220,6 +222,9 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 						src="${post.data.heroImage}"
 						alt="${post.data.title}"
 						class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+						loading="lazy"
+						width="760"
+						height="570"
 					/>
 					<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 				</div>

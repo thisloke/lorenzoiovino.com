@@ -8,6 +8,15 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: optimizeLegibility;
+		font-family:
+			"Inter",
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			"Helvetica Neue",
+			Arial,
+			sans-serif;
 	}
 
 	/* Typography base */
@@ -17,6 +26,9 @@
 			"kern" 1,
 			"liga" 1,
 			"calt" 1;
+		/* Previene layout shift durante il caricamento del font */
+		font-synthesis: none;
+		-webkit-text-size-adjust: 100%;
 	}
 
 	/* Headings ottimizzati */
@@ -32,6 +44,8 @@
 			"liga" 1,
 			"calt" 1,
 			"ss01" 1;
+		/* Contenimento del layout per prevenire shift */
+		contain: layout style paint;
 	}
 
 	h1 {
@@ -84,5 +98,16 @@
 
 	.text-pretty {
 		text-wrap: pretty;
+	}
+
+	/* Previeni layout shift per elementi con contenuto dinamico */
+	.prevent-shift {
+		contain: layout style paint;
+		content-visibility: auto;
+	}
+
+	/* Ottimizza rendering immagini */
+	img {
+		contain: size layout paint;
 	}
 }
