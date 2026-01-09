@@ -9,7 +9,7 @@
 }
 
 .prose h2 {
-	font-size: 2.25rem !important;
+	font-size: 1.875rem !important;
 	font-weight: 700 !important;
 	color: #111827 !important;
 	margin-top: 3rem !important;
@@ -45,7 +45,7 @@
 
 @media (min-width: 768px) {
 	.prose h2 {
-		font-size: 3rem !important;
+		font-size: 2rem !important;
 	}
 }
 

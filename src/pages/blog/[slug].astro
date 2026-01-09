@@ -65,7 +65,7 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 					)
 				}
 				<h1
-					class="text-gray-900 dark:text-gray-100 mb-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+					class="text-gray-900 dark:text-gray-100 mb-4 text-4xl md:text-5xl lg:text-5xl font-bold leading-normal pb-2"
 				>
 					{entry.data.title}
 				</h1>
@@ -105,26 +105,26 @@ const heroImageSrc = entry.data.heroImage?.src || mePhoto.src;
 			<div
 				class="mt-8 md:mt-12 bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl shadow-lg p-6 sm:p-8 transition-colors duration-200"
 			>
-				<div class="flex items-start gap-6">
+				<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
 					<Image
 						src={mePhoto}
 						alt="Lorenzo Iovino"
-						class="w-20 h-20 rounded-full object-cover"
+						class="w-20 h-20 rounded-full object-cover flex-shrink-0"
 						width={80}
 						height={80}
 						quality={90}
 						format="webp"
 					/>
-					<div>
+					<div class="text-center sm:text-left">
 						<h3 class="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
 							Lorenzo Iovino
 						</h3>
 						<p class="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-4">
-							Software Engineer based in Sicily, passionate about technology, remote work, and life
-							balance. When not coding, you'll find me working on my vineyard or exploring the
-							beautiful Sicilian countryside.
+							I write software and I also work on a small vineyard in Sicily. In code, trees grow
+							downward from the root. In real life, trees grow upward from the roots. I spend way
+							too much time thinking about this.
 						</p>
-						<div class="flex gap-4">
+						<div class="flex gap-4 justify-center sm:justify-start">
 							<a
 								href="https://www.linkedin.com/in/lorenzoiovino/"
 								target="_blank"

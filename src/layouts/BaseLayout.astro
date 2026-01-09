@@ -222,5 +222,130 @@ const fullCanonicalUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
 	</head>
 	<body class="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-200">
 		<slot />
+
+		<!-- Dark Mode Suggestion Toast -->
+		<div
+			id="dark-mode-toast"
+			class="hidden fixed bottom-6 right-6 bg-white dark:bg-gray-800 shadow-2xl rounded-xl p-4 max-w-sm border border-gray-200 dark:border-gray-700 z-50 transition-all duration-300 transform translate-y-0"
+			style="animation: slideUp 0.3s ease-out;"
+		>
+			<div class="flex items-start gap-3">
+				<div class="flex-shrink-0 mt-0.5">
+					<svg
+						class="w-5 h-5 text-gray-700 dark:text-gray-300"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+						></path>
+					</svg>
+				</div>
+				<div class="flex-1">
+					<p class="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">Try Dark Mode?</p>
+					<p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+						Experience the site in a beautiful dark theme
+					</p>
+					<div class="flex gap-2">
+						<button
+							id="try-dark-mode"
+							class="px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg hover:bg-gray-800 transition-colors"
+						>
+							Enable
+						</button>
+						<button
+							id="dismiss-toast"
+							class="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-200 transition-colors"
+						>
+							Maybe later
+						</button>
+					</div>
+				</div>
+				<button
+					id="close-toast"
+					class="flex-shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+					aria-label="Close"
+				>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<style>
+			@keyframes slideUp {
+				from {
+					transform: translateY(100px);
+					opacity: 0;
+				}
+				to {
+					transform: translateY(0);
+					opacity: 1;
+				}
+			}
+		</style>
+
+		<script is:inline>
+			// Dark mode suggestion toast
+			(function () {
+				const TOAST_DISMISSED_KEY = "darkModeToastDismissed";
+				const toast = document.getElementById("dark-mode-toast");
+				const tryButton = document.getElementById("try-dark-mode");
+				const dismissButton = document.getElementById("dismiss-toast");
+				const closeButton = document.getElementById("close-toast");
+
+				// Check if user has already dismissed the toast
+				const hasBeenDismissed = localStorage.getItem(TOAST_DISMISSED_KEY);
+
+				// Only show toast if user is in light mode and hasn't dismissed it
+				setTimeout(() => {
+					const isDarkMode = document.documentElement.classList.contains("dark");
+					if (!isDarkMode && !hasBeenDismissed && toast) {
+						toast.classList.remove("hidden");
+					}
+				}, 2000);
+
+				// Enable dark mode
+				if (tryButton) {
+					tryButton.addEventListener("click", () => {
+						document.documentElement.classList.add("dark");
+						localStorage.setItem("theme", "dark");
+						localStorage.setItem(TOAST_DISMISSED_KEY, "true");
+						toast?.classList.add("hidden");
+
+						// Update theme toggle icons
+						const darkIcons = document.querySelectorAll(".theme-toggle-dark-icon");
+						const lightIcons = document.querySelectorAll(".theme-toggle-light-icon");
+						darkIcons.forEach((icon) => icon.classList.add("hidden"));
+						lightIcons.forEach((icon) => icon.classList.remove("hidden"));
+					});
+				}
+
+				// Dismiss toast
+				if (dismissButton) {
+					dismissButton.addEventListener("click", () => {
+						localStorage.setItem(TOAST_DISMISSED_KEY, "true");
+						toast?.classList.add("hidden");
+					});
+				}
+
+				// Close toast
+				if (closeButton) {
+					closeButton.addEventListener("click", () => {
+						localStorage.setItem(TOAST_DISMISSED_KEY, "true");
+						toast?.classList.add("hidden");
+					});
+				}
+			})();
+		</script>
 	</body>
 </html>
