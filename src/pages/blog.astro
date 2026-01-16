@@ -125,7 +125,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 												loading={index === 0 ? "eager" : "lazy"}
 												fetchpriority={index === 0 ? "high" : undefined}
 											/>
-											<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+											<div class="absolute inset-0" />
 										</div>
 									</a>
 								)}
@@ -226,7 +226,7 @@ const initialPosts: BlogPost[] = sortedPosts.slice(0, 6);
 						width="760"
 						height="570"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+					<div class="absolute inset-0"></div>
 				</div>
 			</a>
 		`
