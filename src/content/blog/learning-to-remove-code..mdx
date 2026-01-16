@@ -1,0 +1,139 @@
+---
+title: "Learning to remove code"
+description: "How I slowly learned that good engineering is often about removing things. Not adding them."
+pubDate: 2026-01-16
+heroImage: "../../assets/photos/learning-to-remove-code/cover.png"
+tags: ["engineering", "software", "lean", "refactoring"]
+---
+
+import { Image } from 'astro:assets';
+import githDiff from '../../assets/photos/learning-to-remove-code/github-diff.png';
+
+At the beginning, for me, software engineering was **mostly about code**.
+
+I opened the IDE, looked at the code and my first instinct was always the same: write more, add something, improve something. <br/><br/>That felt like the job or at least... that’s what I believed at the time 😁
+
+## Counting to ten before touching the keyboard
+
+At some point, something started to change.
+
+Not in a single moment and not because of a big event, I began to notice that many of the problems we were facing were not really technical problems, but they were complexity problems -> **noise problems**.
+<br/>
+
+I remember clearly one situation that happen a couple of years ago: _we had old code paths, commented blocks, half-abandoned features, it was code that was kept “just in case”, because removing it felt risky, or simply uncomfortable_
+
+<div class="float-right" style="width:100%;height:0;padding-bottom:57%;position:relative;margin:2rem auto;">
+<iframe src="https://giphy.com/embed/ggM9uqf27nBkH9uwk1" style="pointer-events: none;" frameBorder="0" class="giphy-embed" allowFullScreen title="Animated GIF of someone counting to 10" aria-label="Person counting to ten before making a decision"></iframe>
+</div>
+<br/>
+My old instinct jump in immediately. Refactor it! Rewrite it! Make it cleaner! Touch it, somehow..
+<br/>
+Then I stopped. I literally paused for a few seconds, the same way you count to ten when you are about to do something impulsive.
+
+<br/>
+
+<br/>
+And I asked myself a different question: **does this code need to exist at all?**
+
+## Removing instead of preserving
+
+That question changed the direction of the conversation.
+<br/>
+Not a meeting. Just an internal one.
+
+Between the part of me that wanted to keep things “just in case” and the part that was finally ready to let them go.
+
+In the end, we made a decision. We removed the code.
+
+<br/>
+- Not commented.<br/>
+- Not versioned.<br/>
+- Not hidden behind flags.<br/>
+<br/>
+**Removed. Bye bye! 👋**
+<br/>
+
+Old code is past code. New code is the only code that matters.
+<div class="float-left img-small px-2 md:px-0" style="text-align: center; margin: 2rem 0;">
+  <Image src={githDiff} alt="GitHub diff showing code deletion with green additions and red removals" width={300} height={100} quality={90} format="webp" className="float-left img-small"/>
+  <em class="text-sm block mt-2">Sometimes the best commit is a deletion</em>
+</div>
+<br/>
+Keeping dead code gives a fake sense of safety but in reality it increases mental load.
+
+Every file becomes heavier to read, every decision takes longer and the repository slowly gets louder.
+
+## A lesson from *Clean Code*
+
+There is a passage from *Clean Code* by Robert C. Martin that i never really forgot:
+
+> “Indeed, the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code [...] making it easy to read makes it easier to write.”
+<br/>
+Dead code is still read, even if it never runs.
+
+Removing it is not destructive, instead is an act of care for the people who will read the code tomorrow, including yourself.
+<br/>
+And of course, I couldn’t resist doing what engineers do best: trying to engineer even the process of removing code! 🤓
+
+## How I decide what can be removed
+
+I built a small mental checklist (nothing formal, just practical stuff).
+- Look for its **real usage**. Where does this start? An endpoint, a cron, a UI flow, an event handler... etc.. if I cannot clearly point to an entrypoint, that is already a smell.
+
+- Search for **callers**: imports, references, wiring in routers or containers. When code exists only by itself, untouched, it is usually lonely for a reason.
+
+- Check the **logs**. If I have logs or metrics, even very basic ones, I check them. Access logs are often enough, if nothing touched that path for months... I become suspicious.
+
+- When I’m not completely sure, I don’t delete immediately, I just disable the path and I wait for a release cycle and if nobody yell, the code goes away for real 👋
+
+And when I delete, I delete everything. I approach deletion seriously. <br/><br/>
+
+<div style="width:100%;height:0;padding-bottom:57%;position:relative;"><iframe src="https://giphy.com/embed/qm59N8lI9OevovMyFS" width="100%" height="100%" style="position:absolute;pointer-events: none;" frameBorder="0"  allowFullScreen></iframe></div>
+<br/>
+Not just the file: config, environment variables, feature flags, documentation, tests that were testing ghosts. Everything!
+
+## The "Fallas" effect
+
+This process always reminds me of the Fallas in Valencia, where once a year, people build beautiful scuplptures for months. They are beautiful, complex and very detailed... and then, in the end, they burn everything!
+<br/>
+
+<center>Fire as cleanup.</center>
+<br/>
+
+Removing code feels very similar. You burn what no longer serves you, you free space and you reduce noise. <br/>
+After that, the system breathes.
+
+## LLMs, agents and growing context
+
+This became even more evident recently, where many LLM-driven coding agents are very good at adding code, but they generate files, duplicate logic and move very fast. What they rarely do is remove things.
+<br/>
+
+Not because they are bad, but because they are not built for that.
+A coding agent has no real retrospective, it does't feel the weight of the codebase growing over time and it doesnt't pay the cost of extra files and extra context.
+<br/>
+
+The result is more context, bigger context windows, more noise, big bill and less results!
+
+<br/>
+
+In large projects, this becomes dangerous. You get fast progress, but slower understanding and understanding is what keeps systems alive in the long run.
+<br/>
+<center>
+<div style="width:480px;height:0;padding-bottom:57%;position:relative;">
+<iframe src="https://giphy.com/embed/30O6emI7tFRew" width="100%" height="100%" style="position:absolute;pointer-events:none;" frameBorder="0" class="giphy-embed" allowFullScreen title="Animated GIF of overwhelming accumulation" aria-label="Visual representation of things piling up and accumulating uncontrollably"></iframe>
+</div>
+</center>
+
+LLMs are great at building houses but they are still terrible at living in them.
+Maintenance, cleanup and control are still human responsibilities.
+
+
+## Closing
+
+I still like writing code. A lot, BUT, But but... now I also enjoy choosing not to write it.
+That is still engineering, more pure engineering.
+<br/>
+
+So, repositories are not museums and code that is not there cannot break.
+
+Sometimes, the best commit is a deletion.
