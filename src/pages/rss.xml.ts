@@ -11,7 +11,7 @@ export async function GET(context: APIContext) {
 	return rss({
 		title: "Lorenzo Iovino >> Blog",
 		description:
-			"Thoughts, experiences, and insights about software engineering, technology, and life by Lorenzo Iovino",
+			"Thoughts, experiences and insights about software engineering, technology and life by Lorenzo Iovino",
 		site: context.site?.toString() || "https://lorenzoiovino.com",
 		items: publishedPosts.map((post) => ({
 			title: post.data.title,
